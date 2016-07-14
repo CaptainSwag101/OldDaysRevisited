@@ -34,17 +34,18 @@ public class KeyHandler {
 
     @SubscribeEvent
     public void onKeyInput(KeyInputEvent event) {
-        System.out.println("Key Down");
+        //System.out.println("Key Down");
 
         EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
 
         if(FMLClientHandler.instance().getClient().inGameHasFocus) {
-            System.out.println("Game does have focus");
+            //System.out.println("Game does have focus");
 
             int kb = Keyboard.getEventKey();
             boolean isDown = Keyboard.getEventKeyState();
 
             if(kb == keys[0].getKeyCode() && isDown) {
+                System.out.println("Opening OldDays Config Menu");
                 player.openGui(OldDaysRevisited.olddays, 0, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
                 //if your not sure, use player.openGui(MAINMODCLASS.instance, YOURGUIID, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 

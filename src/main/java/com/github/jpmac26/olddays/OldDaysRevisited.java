@@ -5,6 +5,7 @@ import com.github.jpmac26.olddays.entities.enderman.RenderODEnderman;
 import com.github.jpmac26.olddays.gui.GuiHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.main.Main;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;

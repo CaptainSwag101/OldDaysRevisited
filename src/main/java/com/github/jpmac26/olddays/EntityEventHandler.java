@@ -3,7 +3,10 @@ package com.github.jpmac26.olddays;
 import com.github.jpmac26.olddays.entities.enderman.EntityODEnderman;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by James Pelster on 7/13/2016.
@@ -20,6 +23,7 @@ public class EntityEventHandler {
             System.out.println("Replacing vanilla Enderman with OldDays Enderman");
             event.getWorld().spawnEntityInWorld(spawnEntity);
             event.setCanceled(true);
+            event.setResult(Event.Result.ALLOW);
         }
     }
 }

@@ -1,3 +1,5 @@
+entity.olddays.Enderman.name=Enderman
+
 module.actions=Actions
 module.bugs=Bugs
 module.gameplay=Gameplay

@@ -30,15 +30,15 @@ public class GuiConfigMain extends GuiScreen {
         this.buttonList.clear();
 
         //initialize buttons leading to sub-menus
-        ActionsButton = new GuiButton(1, this.width / 2 - 155 + 1 % 2 * 160, this.height / 6 - 12 + 24 * (1 >> 1), I18n.format("olddays:menu.ActionButton", new Object[0]));
-        BugsButton = new GuiButton(2, this.width / 2 - 155 + 2 % 2 * 160, this.height / 6 - 12 + 24 * (2 >> 1), I18n.format("olddays:menu.BugsButton", new Object[0]));
-        GameplayButton = new GuiButton(3, this.width / 2 - 155 + 3 % 2 * 160, this.height / 6 - 12 + 24 * (3 >> 1), I18n.format("olddays:menu.GameplayButton", new Object[0]));
-        MobsButton = new GuiButton(4, this.width / 2 - 155 + 4 % 2 * 160, this.height / 6 - 12 + 24 * (4 >> 1), I18n.format("olddays:menu.MobsButton", new Object[0]));
-        EyecandyButton = new GuiButton(5, this.width / 2 - 155 + 5 % 2 * 160, this.height / 6 - 12 + 24 * (5 >> 1), I18n.format("olddays:menu.EyecandyButton", new Object[0]));
-        SoundsButton = new GuiButton(6, this.width / 2 - 155 + 6 % 2 * 160, this.height / 6 - 12 + 24 * (6 >> 1), I18n.format("olddays:menu.SoundsButton", new Object[0]));
-        CraftingButton = new GuiButton(7, this.width / 2 - 155 + 7 % 2 * 160, this.height / 6 - 12 + 24 * (7 >> 1), I18n.format("olddays:menu.CraftingButton", new Object[0]));
-        TexturesButton = new GuiButton(8, this.width / 2 - 155 + 8 % 2 * 160, this.height / 6 - 12 + 24 * (8 >> 1), I18n.format("olddays:menu.TexturesButton", new Object[0]));
-        WorldButton = new GuiButton(9, this.width / 2 - 155 + 9 % 2 * 160, this.height / 6 - 12 + 24 * (9 >> 1), I18n.format("olddays:menu.WorldButton", new Object[0]));
+        ActionsButton = new GuiButton(1, this.width / 2 - 155 + 1 % 2 * 160, this.height / 6 - 12 + 24 * (1 >> 1), I18n.format("module.actions", new Object[0]));
+        BugsButton = new GuiButton(2, this.width / 2 - 155 + 2 % 2 * 160, this.height / 6 - 12 + 24 * (2 >> 1), I18n.format("module.bugs", new Object[0]));
+        GameplayButton = new GuiButton(3, this.width / 2 - 155 + 3 % 2 * 160, this.height / 6 - 12 + 24 * (3 >> 1), I18n.format("module.gameplay", new Object[0]));
+        MobsButton = new GuiButton(4, this.width / 2 - 155 + 4 % 2 * 160, this.height / 6 - 12 + 24 * (4 >> 1), I18n.format("module.mobs", new Object[0]));
+        EyecandyButton = new GuiButton(5, this.width / 2 - 155 + 5 % 2 * 160, this.height / 6 - 12 + 24 * (5 >> 1), I18n.format("module.eyecandy", new Object[0]));
+        SoundsButton = new GuiButton(6, this.width / 2 - 155 + 6 % 2 * 160, this.height / 6 - 12 + 24 * (6 >> 1), I18n.format("module.sounds", new Object[0]));
+        CraftingButton = new GuiButton(7, this.width / 2 - 155 + 7 % 2 * 160, this.height / 6 - 12 + 24 * (7 >> 1), I18n.format("module.crafting", new Object[0]));
+        TexturesButton = new GuiButton(8, this.width / 2 - 155 + 8 % 2 * 160, this.height / 6 - 12 + 24 * (8 >> 1), I18n.format("module.textures", new Object[0]));
+        WorldButton = new GuiButton(9, this.width / 2 - 155 + 9 % 2 * 160, this.height / 6 - 12 + 24 * (9 >> 1), I18n.format("module.nbxlite", new Object[0]));
 
         this.buttonList.add(ActionsButton);
         this.buttonList.add(BugsButton);

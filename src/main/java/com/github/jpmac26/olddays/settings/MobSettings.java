@@ -8,11 +8,13 @@ import com.github.jpmac26.olddays.entities.enderman.LayerODEndermanEyes;
  */
 public class MobSettings {
 
-    public static void setOldEndermen(boolean value)
+    public static void setOldMobHealth(boolean value)
     {
-        EntityODEnderman.smoke = value;
-        EntityODEnderman.oldPicking = value;
         EntityODEnderman.oldhealth = value;
-        EntityODEnderman.oldEyes = value;
+    }
+
+    public static void setUnnerfedEndermen(boolean value)
+    {
+        EntityODEnderman.oldPicking = value;
     }
 }

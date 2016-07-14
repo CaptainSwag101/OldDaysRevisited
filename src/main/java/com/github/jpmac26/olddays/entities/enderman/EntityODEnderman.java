@@ -56,10 +56,10 @@ import net.minecraft.world.storage.loot.LootTableList;
  */
 public class EntityODEnderman extends EntityMob
 {
-    public static boolean smoke = false;
-    public static boolean oldPicking = false;
-    public static boolean oldhealth = false;
-    public static boolean oldEyes = false;
+    public static boolean smoke = true;
+    public static boolean oldPicking = true;
+    public static boolean oldhealth = true;
+    public static boolean oldEyes = true;
 
     private static final Set<Block> CARRIABLE_BLOCKS = Sets.<Block>newIdentityHashSet();
     private static final Set<Block> CARRIABLE_BLOCKS_OLD = Sets.<Block>newIdentityHashSet();
