@@ -51,18 +51,22 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 
+/**
+ * Created by James Pelster on 7/11/2016.
+ */
 public class EntityODEnderman extends EntityMob
 {
-    public static boolean smoke = true;
-    public static boolean oldPicking = true;
-    public static boolean oldhealth = true;
+    public static boolean smoke = false;
+    public static boolean oldPicking = false;
+    public static boolean oldhealth = false;
+    public static boolean oldEyes = false;
 
     private static final Set<Block> CARRIABLE_BLOCKS = Sets.<Block>newIdentityHashSet();
     private static final Set<Block> CARRIABLE_BLOCKS_OLD = Sets.<Block>newIdentityHashSet();
     private static final UUID ATTACKING_SPEED_BOOST_ID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
     private static final AttributeModifier ATTACKING_SPEED_BOOST = (new AttributeModifier(ATTACKING_SPEED_BOOST_ID, "Attacking speed boost", 0.15000000596046448D, 0)).setSaved(false);
-    private static final DataParameter<com.google.common.base.Optional<IBlockState>> CARRIED_BLOCK = EntityDataManager.<com.google.common.base.Optional<IBlockState>>createKey(net.minecraft.entity.monster.EntityEnderman.class, DataSerializers.OPTIONAL_BLOCK_STATE);
-    private static final DataParameter<Boolean> SCREAMING = EntityDataManager.<Boolean>createKey(net.minecraft.entity.monster.EntityEnderman.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<com.google.common.base.Optional<IBlockState>> CARRIED_BLOCK = EntityDataManager.<com.google.common.base.Optional<IBlockState>>createKey(EntityODEnderman.class, DataSerializers.OPTIONAL_BLOCK_STATE);
+    private static final DataParameter<Boolean> SCREAMING = EntityDataManager.<Boolean>createKey(EntityODEnderman.class, DataSerializers.BOOLEAN);
     private int lastCreepySound;
     private int targetChangeTime;
 

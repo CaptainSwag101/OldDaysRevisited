@@ -19,6 +19,7 @@ public class EntityEventHandler {
             spawnEntity.setPosition(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ);
             System.out.println("Replacing vanilla Enderman with OldDays Enderman");
             event.getWorld().spawnEntityInWorld(spawnEntity);
+            event.setCanceled(true);
         }
     }
 }

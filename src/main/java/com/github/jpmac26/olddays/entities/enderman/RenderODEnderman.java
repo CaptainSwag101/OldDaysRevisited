@@ -10,6 +10,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
+/**
+ * Created by James Pelster on 7/11/2016.
+ */
 @SideOnly(Side.CLIENT)
 public class RenderODEnderman extends RenderLiving<EntityODEnderman>
 {
