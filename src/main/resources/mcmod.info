@@ -1,14 +1,14 @@
 [
 {
-  "modid": "OldDaysRevisited",
+  "modid": "olddays",
   "name": "Old Days Revisited",
-  "description": "Example placeholder mod.",
+  "description": "A recreation of Exalm's 'Old Days' and 'NBXLite' mods for Minecraft Forge.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://github.com/jpmac26/OldDaysRevisited",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["jpmac26/CaptainSwag101"],
+  "credits": "Exalm, for making such an amazing original mod, the likeschedule of which no one had ever seen before.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
