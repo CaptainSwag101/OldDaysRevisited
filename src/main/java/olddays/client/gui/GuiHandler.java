@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 /**
- * Created by admin on 7/14/2016.
+ * Created by James Pelster on 7/14/2016.
  */
 public class GuiHandler implements IGuiHandler {
     public static final int GUI_CONFIG_MAIN = 0;

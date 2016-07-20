@@ -7,12 +7,13 @@ import net.minecraft.client.resources.I18n;
 import java.io.IOException;
 
 /**
- * Created by James Pelster on 7/14/2016.
+ * Created by James Pelster on 7/20/2016.
  */
-public class GuiConfigWorld extends GuiScreen {
+public class GuiConfigCrafting extends GuiScreen {
+
     private final GuiScreen parentGuiScreen;
 
-    public GuiConfigWorld(GuiScreen parent) {
+    public GuiConfigCrafting(GuiScreen parent) {
         this.parentGuiScreen = parent;
     }
 

@@ -20,12 +20,4 @@ public class MobSettings {
     public static void toggleUnnerfedEndermen() { EntityODEnderman.oldPicking = !EntityODEnderman.oldPicking; }
 
     public static boolean getUnnerfedEndermen() { return EntityODEnderman.oldPicking; }
-
-    public static void toggleOldEndermen() { EntityODEnderman.oldAppearance = !EntityODEnderman.oldAppearance; }
-
-    public static boolean getOldEndermen() { return EntityODEnderman.oldAppearance; }
-
-    public static void toggleOldEndermanSounds() { EntityODEnderman.oldSounds = !EntityODEnderman.oldSounds; }
-
-    public static boolean getOldEndermanSounds() { return EntityODEnderman.oldSounds; }
 }

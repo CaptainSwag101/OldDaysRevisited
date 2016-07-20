@@ -8,7 +8,7 @@ module.eyecandy=Eyecandy
 module.sounds=Sounds
 module.crafting=Crafting
 module.textures=Textures
-module.nbxlite=NBXlite
+module.nbxlite=World
 
 gui.on=ON
 gui.off=OFF
@@ -30,6 +30,9 @@ gui.presets.save=Save current settings
 gui.presets.new=New Preset
 gui.presets.default=Default
 gui.presets.custom=Custom
+
+key.olddays.category=Old Days Revisited
+key.olddays_menu.desc=Open Old Days Menu
 
 actions.punchtnt.name=Punch TNT
  actions.punchtnt.desc1=Allows lighting TNT by punching it.

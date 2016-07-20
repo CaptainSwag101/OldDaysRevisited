@@ -65,43 +65,28 @@ public class GuiConfigMain extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button.id == 1) {
-            this.mc.displayGuiScreen(null);
-            if (this.mc.currentScreen == null)
-                this.mc.setIngameFocus();
+            this.mc.displayGuiScreen(new GuiConfigActions(this));
         }
         if (button.id == 2) {
-            //Main.packetHandler.sendToServer(...);
-            this.mc.displayGuiScreen(null);
-            if (this.mc.currentScreen == null)
-                this.mc.setIngameFocus();
+            this.mc.displayGuiScreen(new GuiConfigGameplay(this));
         }
         if (button.id == 3) { //Mobs Button
             this.mc.displayGuiScreen(new GuiConfigMobs(this));
         }
         if (button.id == 4) {
-            this.mc.displayGuiScreen(null);
-            if (this.mc.currentScreen == null)
-                this.mc.setIngameFocus();
+            this.mc.displayGuiScreen(new GuiConfigEyecandy(this));
         }
         if (button.id == 5) {
-            this.mc.displayGuiScreen(null);
-            if (this.mc.currentScreen == null)
-                this.mc.setIngameFocus();
+            this.mc.displayGuiScreen(new GuiConfigSounds(this));
         }
         if (button.id == 6) {
-            this.mc.displayGuiScreen(null);
-            if (this.mc.currentScreen == null)
-                this.mc.setIngameFocus();
+            this.mc.displayGuiScreen(new GuiConfigCrafting(this));
         }
         if (button.id == 7) {
-            this.mc.displayGuiScreen(null);
-            if (this.mc.currentScreen == null)
-                this.mc.setIngameFocus();
+            this.mc.displayGuiScreen(new GuiConfigTextures(this));
         }
         if (button.id == 8) {
-            this.mc.displayGuiScreen(null);
-            if (this.mc.currentScreen == null)
-                this.mc.setIngameFocus();
+            this.mc.displayGuiScreen(new GuiConfigWorld(this));
         }
         if (button.id == 9) {
             this.mc.displayGuiScreen(null);
