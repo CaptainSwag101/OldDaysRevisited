@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.entities.enderman;
+package olddays.entities.enderman;
 
 
 import com.google.common.base.Function;
@@ -25,7 +25,6 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,10 +55,10 @@ import net.minecraft.world.storage.loot.LootTableList;
  */
 public class EntityODEnderman extends EntityMob
 {
-    public static boolean smoke = true;
     public static boolean oldPicking = true;
-    public static boolean oldhealth = true;
-    public static boolean oldEyes = true;
+    public static boolean oldHealth = true;
+    public static boolean oldAppearance = true;
+    public static boolean oldSounds = true;
 
     private static final Set<Block> CARRIABLE_BLOCKS = Sets.<Block>newIdentityHashSet();
     private static final Set<Block> CARRIABLE_BLOCKS_OLD = Sets.<Block>newIdentityHashSet();
@@ -101,7 +100,7 @@ public class EntityODEnderman extends EntityMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(oldhealth ? 20D : 40D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(oldHealth ? 20D : 40D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30000001192092896D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
@@ -146,7 +145,7 @@ public class EntityODEnderman extends EntityMob
         {
             this.lastCreepySound = this.ticksExisted;
 
-            if (!this.isSilent())
+            if (!this.isSilent() && oldSounds)
             {
                 this.worldObj.playSound(this.posX, this.posY + (double)this.getEyeHeight(), this.posZ, SoundEvents.ENTITY_ENDERMEN_STARE, this.getSoundCategory(), 2.5F, 1.0F, false);
             }
@@ -155,7 +154,7 @@ public class EntityODEnderman extends EntityMob
 
     public void notifyDataManagerChange(DataParameter<?> key)
     {
-        if (SCREAMING.equals(key) && this.isScreaming() && this.worldObj.isRemote)
+        if (SCREAMING.equals(key) && this.isScreaming() && this.worldObj.isRemote && oldSounds)
         {
             this.playEndermanSound();
         }
@@ -163,9 +162,9 @@ public class EntityODEnderman extends EntityMob
         super.notifyDataManagerChange(key);
     }
 
-    public static void func_189763_b(DataFixer p_189763_0_)
+    public static void registerFixesEnderman(DataFixer fixer)
     {
-        EntityLiving.func_189752_a(p_189763_0_, "ODEnderman");
+        EntityLiving.registerFixesMob(fixer, "Enderman");
     }
 
     /**
@@ -245,7 +244,7 @@ public class EntityODEnderman extends EntityMob
     {
         for (int k = 0; k < 2; k++)
         {
-            if (smoke) {
+            if (oldAppearance) {
                 worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX + (rand.nextDouble() - 0.5D) * (double)width, posY + rand.nextDouble() * (double)height, posZ + (rand.nextDouble() - 0.5D) * (double)width, 0.0D, 0.0D, 0.0D);
             } else {
                 worldObj.spawnParticle(EnumParticleTypes.PORTAL, posX + (rand.nextDouble() - 0.5D) * (double)width, (posY + rand.nextDouble() * (double)height) - 0.25D, posZ + (rand.nextDouble() - 0.5D) * (double)width, (rand.nextDouble() - 0.5D) * 2D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D);
@@ -322,17 +321,17 @@ public class EntityODEnderman extends EntityMob
 
     protected SoundEvent getAmbientSound()
     {
-        return this.isScreaming() ? SoundEvents.ENTITY_ENDERMEN_SCREAM : SoundEvents.ENTITY_ENDERMEN_AMBIENT;
+        return !oldSounds ? (this.isScreaming() ? SoundEvents.ENTITY_ENDERMEN_SCREAM : SoundEvents.ENTITY_ENDERMEN_AMBIENT) : SoundEvents.ENTITY_ZOMBIE_AMBIENT;
     }
 
     protected SoundEvent getHurtSound()
     {
-        return SoundEvents.ENTITY_ENDERMEN_HURT;
+        return !oldSounds ? SoundEvents.ENTITY_ENDERMEN_HURT : SoundEvents.ENTITY_ZOMBIE_HURT;
     }
 
     protected SoundEvent getDeathSound()
     {
-        return SoundEvents.ENTITY_ENDERMEN_DEATH;
+        return !oldSounds ? SoundEvents.ENTITY_ENDERMEN_DEATH : SoundEvents.ENTITY_ZOMBIE_DEATH;
     }
 
     /**
@@ -422,9 +421,11 @@ public class EntityODEnderman extends EntityMob
             if (canCarry) CARRIABLE_BLOCKS.add(block);
             else          CARRIABLE_BLOCKS.remove(block);
     }
+
     public static boolean getCarriable(Block block)
     {
-        return CARRIABLE_BLOCKS.contains(block);
+        if (oldPicking) return CARRIABLE_BLOCKS_OLD.contains(block);
+        else return CARRIABLE_BLOCKS.contains(block);
     }
     /*===================================== Forge End ==============================*/
 
@@ -451,13 +452,24 @@ public class EntityODEnderman extends EntityMob
         CARRIABLE_BLOCKS.add(Blocks.MYCELIUM);
         CARRIABLE_BLOCKS.add(Blocks.NETHERRACK);
 
-        CARRIABLE_BLOCKS_OLD.add(Blocks.STONE);
         CARRIABLE_BLOCKS_OLD.add(Blocks.GRASS);
         CARRIABLE_BLOCKS_OLD.add(Blocks.DIRT);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.COBBLESTONE);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.PLANKS);
         CARRIABLE_BLOCKS_OLD.add(Blocks.SAND);
         CARRIABLE_BLOCKS_OLD.add(Blocks.GRAVEL);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.YELLOW_FLOWER);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.RED_FLOWER);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.BROWN_MUSHROOM);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.RED_MUSHROOM);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.TNT);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.CACTUS);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.CLAY);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.PUMPKIN);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.MELON_BLOCK);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.MYCELIUM);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.NETHERRACK);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.STONE);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.COBBLESTONE);
+        CARRIABLE_BLOCKS_OLD.add(Blocks.PLANKS);
         CARRIABLE_BLOCKS_OLD.add(Blocks.COAL_ORE);
         CARRIABLE_BLOCKS_OLD.add(Blocks.COAL_BLOCK);
         CARRIABLE_BLOCKS_OLD.add(Blocks.DIAMOND_ORE);
@@ -478,28 +490,17 @@ public class EntityODEnderman extends EntityMob
         CARRIABLE_BLOCKS_OLD.add(Blocks.LAPIS_BLOCK);
         CARRIABLE_BLOCKS_OLD.add(Blocks.SANDSTONE);
         CARRIABLE_BLOCKS_OLD.add(Blocks.WOOL);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.RED_FLOWER);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.YELLOW_FLOWER);
         CARRIABLE_BLOCKS_OLD.add(Blocks.BROWN_MUSHROOM_BLOCK);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.BROWN_MUSHROOM);
         CARRIABLE_BLOCKS_OLD.add(Blocks.RED_MUSHROOM_BLOCK);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.RED_MUSHROOM);
         CARRIABLE_BLOCKS_OLD.add(Blocks.BRICK_BLOCK);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.TNT);
         CARRIABLE_BLOCKS_OLD.add(Blocks.BOOKSHELF);
         CARRIABLE_BLOCKS_OLD.add(Blocks.MOSSY_COBBLESTONE);
         CARRIABLE_BLOCKS_OLD.add(Blocks.CRAFTING_TABLE);
         CARRIABLE_BLOCKS_OLD.add(Blocks.ICE);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.CACTUS);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.CLAY);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.PUMPKIN);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.NETHERRACK);
         CARRIABLE_BLOCKS_OLD.add(Blocks.SOUL_SAND);
         CARRIABLE_BLOCKS_OLD.add(Blocks.GLOWSTONE);
         CARRIABLE_BLOCKS_OLD.add(Blocks.LIT_PUMPKIN);
         CARRIABLE_BLOCKS_OLD.add(Blocks.STONEBRICK);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.MELON_BLOCK);
-        CARRIABLE_BLOCKS_OLD.add(Blocks.MYCELIUM);
 
     }
 

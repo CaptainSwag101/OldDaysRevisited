@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.gui;
+package com.github.jpmac26.olddays.client.gui;
 
 public class GuiOldDaysSeparator extends Gui{
     public int baseY;

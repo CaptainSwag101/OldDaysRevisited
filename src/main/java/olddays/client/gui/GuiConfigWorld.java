@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.gui;
+package olddays.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
 

@@ -1,6 +1,6 @@
-package com.github.jpmac26.olddays.gui;
+package com.github.jpmac26.olddays.client.gui;
 
-import com.github.jpmac26.olddays.gui.GuiButtonOldDays;
+import com.github.jpmac26.olddays.client.gui.GuiButtonOldDays;
 
 public class GuiButtonProp extends GuiButtonOldDays {
     public OldDaysProperty prop;

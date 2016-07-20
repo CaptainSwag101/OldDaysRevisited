@@ -1,12 +1,10 @@
-package com.github.jpmac26.olddays;
+package olddays;
 
-import com.github.jpmac26.olddays.entities.enderman.EntityODEnderman;
+import olddays.entities.enderman.EntityODEnderman;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by James Pelster on 7/13/2016.

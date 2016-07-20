@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.gui;
+package com.github.jpmac26.olddays.client.gui;
 
 import java.io.*;
 import java.security.InvalidParameterException;

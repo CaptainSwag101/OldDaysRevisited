@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.entities.enderman;
+package olddays.entities.enderman;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;

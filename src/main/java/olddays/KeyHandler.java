@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays;
+package olddays;
 
 import org.lwjgl.input.Keyboard;
 
@@ -16,7 +16,7 @@ public class KeyHandler {
 
     public static final int CUSTOM_INV = 0;
 
-    private static final String[] desc = {"key.weight_inventory.desc"};
+    private static final String[] desc = {"key.olddays_menu.desc"};
 
     private static final int[] keyValues = {Keyboard.KEY_H};
 
@@ -26,7 +26,7 @@ public class KeyHandler {
         keys = new KeyBinding[desc.length];
 
         for(int i = 0; i < desc.length; i++) {
-            keys[i] = new KeyBinding(desc[i], keyValues[i], "key.weight_limit.category");
+            keys[i] = new KeyBinding(desc[i], keyValues[i], "key.olddays.category");
 
             ClientRegistry.registerKeyBinding(keys[i]);
         }
@@ -47,7 +47,7 @@ public class KeyHandler {
             if(kb == keys[0].getKeyCode() && isDown) {
                 System.out.println("Opening OldDays Config Menu");
                 player.openGui(OldDaysRevisited.olddays, 0, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
-                //if your not sure, use player.openGui(MAINMODCLASS.instance, YOURGUIID, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
+                //if you're not sure, use player.openGui(MAINMODCLASS.instance, YOURGUIID, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 
             }
         }

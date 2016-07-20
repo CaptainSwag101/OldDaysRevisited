@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.entities.enderman;
+package olddays.entities.enderman;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -20,7 +20,7 @@ public class LayerODEndermanEyes implements LayerRenderer<EntityODEnderman>
 
     public void doRenderLayer(EntityODEnderman entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
-        if (EntityODEnderman.oldEyes)
+        if (EntityODEnderman.oldAppearance)
             RES_ENDERMAN_EYES = new ResourceLocation("olddays:textures/enderman_eyes.png");
         else
             RES_ENDERMAN_EYES = new ResourceLocation("textures/entity/enderman/enderman_eyes.png");

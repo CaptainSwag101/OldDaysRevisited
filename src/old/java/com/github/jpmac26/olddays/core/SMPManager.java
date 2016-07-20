@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.gui;
+package com.github.jpmac26.olddays.client.gui;
 
 public class SMPManager{
     public static final int PACKET_C2S_PROP = 0;

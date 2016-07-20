@@ -1,4 +1,4 @@
-package com.github.jpmac26.olddays.gui;
+package com.github.jpmac26.olddays.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
