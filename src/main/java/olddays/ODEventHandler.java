@@ -37,19 +37,18 @@ public class ODEventHandler {
             System.out.println("Replacing vanilla Enderman with OldDays Enderman");
             event.getWorld().spawnEntityInWorld(spawnEntity);
             event.setCanceled(true);
-            event.setResult(Event.Result.ALLOW);
         }
     }
     
-    @SubscribeEvent
+    /* @SubscribeEvent
     public void onSound (PlaySoundEvent eventsound)
     {
     	if(eventsound.getName() == "block.stone.step")
     	{
             SoundEvent soundevent = (SoundEvent)SoundEvent.REGISTRY.getObject(new ResourceLocation("block.sand.step"));
-    		Minecraft.getMinecraft().thePlayer.playSound(soundevent, Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.BLOCKS), 0.0F );;
+    		Minecraft.getMinecraft().thePlayer.playSound(soundevent, Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.BLOCKS), 0.0F );
     	}
     	
-    }
+    } */
     
 }

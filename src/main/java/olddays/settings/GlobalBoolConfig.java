@@ -43,7 +43,7 @@ public class GlobalBoolConfig {
 		this.boolname = name;
 		this.bool = bool;
 		this.path = path;
-		this.file = new File(Minecraft.getMinecraft().mcDataDir, "/config/"+path);
+		this.file = new File(Minecraft.getMinecraft().mcDataDir, "/config/" + path);
 		this.createFile();
 		this.read();
 		ReflectionHelper.setStringFieldWW(clazz, null, name, newbool);
