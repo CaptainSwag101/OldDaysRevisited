@@ -1,5 +1,6 @@
 package olddays;
 
+import net.minecraft.entity.passive.EntitySheep;
 import olddays.entities.enderman.EntityODEnderman;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
@@ -17,6 +18,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import olddays.entities.sheep.EntityODSheep;
 
 /**
  * Created by James Pelster on 7/13/2016.
@@ -35,6 +37,14 @@ public class ODEventHandler {
             EntityODEnderman spawnEntity = new EntityODEnderman(event.getWorld());
             spawnEntity.setPosition(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ);
             System.out.println("Replacing vanilla Enderman with OldDays Enderman");
+            event.getWorld().spawnEntityInWorld(spawnEntity);
+            event.setCanceled(true);
+        }
+        if (event.getEntity() instanceof EntitySheep && !(event.getEntity() instanceof EntityODSheep))
+        {
+            EntityODSheep spawnEntity = new EntityODSheep(event.getWorld());
+            spawnEntity.setPosition(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ);
+            System.out.println("Replacing vanilla Sheep with OldDays Sheep");
             event.getWorld().spawnEntityInWorld(spawnEntity);
             event.setCanceled(true);
         }

@@ -1,5 +1,40 @@
 Changelog:
-Build 2014:
+Build 2018:
+	ezterry3:
+		Fix async race condition on new chunks (closes #3020) (#3090)
+		This patch fixes a race condition that sometimes caused a just generated chunk
+        to be generated a second time.  In some this caused generated structures to
+        appear incomplete such as in Issue #3020 when the second generated version
+        effectively overwrote the original version of the chunk.
+
+        This patch ensures when ProvideChunk calls LoadChunk synchronously we always
+        attempt to load the chunk (if not cached) thus avoid the race condition without
+        changing the logic for async loading for chunks already saved to disk.
+
+        Thus this should retain the async functionality from PR #2946 while preventing
+        generation issues caused by the race condition.
+
+Build 1.10.2-12.18.1.2017:
+	cpw:
+		Some test harness stuffs. Time to get the registry manager properly
+		tested.
+	cpw:
+		More tests. Substitutions now work, and a fix is included. *sigh* Closes
+		too many bugs to count.
+	cpw: Some more substitution tests. It seems like it's working as it should.
+	cpw: Some dummy block replacement tests - it seems they work correctly.
+	cpw: Add the new tests into the suite
+	cpw:
+		Some tweaks to ContainedDeps - it should extract to a file in
+		versionedMods directly, even if the tag in the jar has a subpath
+		element. It'll also skip if there is a matching filename in the main
+		mods dir.
+
+Build 1.10.2-12.18.1.2016-failtests:
+	cpw: Some more substitution tests. It seems like it's working as it should.
+	cpw: Some dummy block replacement tests - it seems they work correctly.
+
+Build 1.10.2-12.18.1.2014:
 	LexManos:
 		Added support for using static methods as event listeners, Register the
 		.class instead of an instance. And added an improvement to calltime

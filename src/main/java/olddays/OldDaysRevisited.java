@@ -1,15 +1,17 @@
 package olddays;
 
+import net.minecraft.client.model.ModelSheep1;
+import net.minecraft.client.model.ModelSheep2;
+import net.minecraft.client.renderer.entity.RenderSheep;
 import net.minecraftforge.fml.common.event.*;
 import olddays.entities.enderman.EntityODEnderman;
 import olddays.entities.enderman.RenderODEnderman;
+import olddays.entities.sheep.EntityODSheep;
 import olddays.settings.ConfigManager;
-import olddays.settings.EyecandySettings;
 import olddays.client.gui.GuiHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -19,16 +21,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static net.minecraftforge.fml.common.registry.EntityRegistry.registerModEntity;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockStone;
-import net.minecraft.block.BlockWorkbench;
-import net.minecraft.block.SoundType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 
 /**
@@ -71,8 +67,9 @@ public class OldDaysRevisited
     
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        //register custom stuff
+        //register custom entities
         registerModEntity(EntityODEnderman.class, "Enderman", 0, this, 64, 1, true);
+        registerModEntity(EntityODSheep.class, "Sheep", 1, this, 64, 1, true);
 
         clientInit(event);
     }
@@ -93,15 +90,9 @@ public class OldDaysRevisited
     public void postLoad(FMLPostInitializationEvent event)
     {
         new ConfigManager();
-		System.out.println("Old Days" + VERSION + "succefully started in" + Minecraft.getMinecraft().getVersion());
+		System.out.println("Old Days Revisited v" + VERSION + " successfully started in Minecraft " + Minecraft.getMinecraft().getVersion());
 
     }
-    
-    @EventHandler
-	public void serverStarting(FMLServerStartingEvent ev)
-	{
-    	
-	}
 
     @SideOnly(Side.CLIENT)
     public void registerRenderThings()
