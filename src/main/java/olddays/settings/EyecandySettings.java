@@ -7,7 +7,14 @@ import olddays.entities.enderman.EntityODEnderman;
  */
 public class EyecandySettings {
 
+	public EyecandySettings()
+	{
+		new GlobalBoolConfig("Old Endermen", EntityODEnderman.class, "oldAppearance", EntityODEnderman.oldAppearance, "olddays_config.cfg");
+	}
+
     public static void toggleOldEndermen() { EntityODEnderman.oldAppearance = !EntityODEnderman.oldAppearance; }
 
     public static boolean getOldEndermen() { return EntityODEnderman.oldAppearance; }
+    
+    
 }

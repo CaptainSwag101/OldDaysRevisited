@@ -164,7 +164,7 @@ public class EntityODEnderman extends EntityMob
 
     public static void registerFixesEnderman(DataFixer fixer)
     {
-        EntityLiving.registerFixesMob(fixer, "Enderman");
+       EntityLiving.registerFixesMob(fixer, "Enderman");
     }
 
     /**
