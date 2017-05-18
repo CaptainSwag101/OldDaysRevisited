@@ -6,6 +6,8 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import olddays.entities.EntityODEnderman;
+import olddays.settings.mob.EndermanSettings;
 
 /**
  * Created by James Pelster on 7/11/2016.
@@ -20,7 +22,7 @@ public class LayerODEndermanEyes implements LayerRenderer<EntityODEnderman>
 
     public void doRenderLayer(EntityODEnderman entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
-        if (EntityODEnderman.oldAppearance)
+        if (EndermanSettings.endermanOldAppearance)
             RES_ENDERMAN_EYES = new ResourceLocation("olddays:textures/enderman_eyes.png");
         else
             RES_ENDERMAN_EYES = new ResourceLocation("textures/entity/enderman/enderman_eyes.png");

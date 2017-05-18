@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import olddays.entities.EntityODEnderman;
 
 /**
  * Created by James Pelster on 7/11/2016.

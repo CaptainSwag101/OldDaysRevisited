@@ -1,24 +1,12 @@
 package olddays;
 
 import net.minecraft.entity.passive.EntitySheep;
-import olddays.entities.enderman.EntityODEnderman;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockStone;
-import net.minecraft.block.SoundType;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.ISound;
+import olddays.entities.EntityODEnderman;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import olddays.entities.sheep.EntityODSheep;
+import olddays.entities.EntityODSheep;
 
 /**
  * Created by James Pelster on 7/13/2016.

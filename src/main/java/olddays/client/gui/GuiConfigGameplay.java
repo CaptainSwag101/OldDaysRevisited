@@ -26,7 +26,7 @@ public class GuiConfigGameplay extends GuiScreen {
     public void initGui() {
         this.buttonList.clear();
 
-        //this.buttonList.add(new GuiButton(1, this.width / 2 - 155, this.height / 6 + 24 - 6, 150, 20, I18n.format("Old Enderman Sounds") + ": " + (SoundSettings.getOldEndermanSounds() ? "On" : "Off")));
+        //this.buttonList.add(new GuiButton(1, this.width / 2 - 155, this.height / 6 + 24 - 6, 150, 20, I18n.format("Old EndermanSettings Sounds") + ": " + (SoundSettings.getOldEndermanSounds() ? "On" : "Off")));
         this.buttonList.add(new GuiButton(3, this.width / 2 - 100, this.height / 6 + 180 - 6, I18n.format("Back to Menu")));
     }
 

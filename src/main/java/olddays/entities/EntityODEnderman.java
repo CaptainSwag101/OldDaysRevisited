@@ -1,5 +1,4 @@
-package olddays.entities.enderman;
-
+package olddays.entities;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -49,17 +48,12 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
+import olddays.settings.mob.EndermanSettings;
 
 /**
  * Created by James Pelster on 7/11/2016.
  */
-public class EntityODEnderman extends EntityMob
-{
-    public static boolean oldPicking = true;
-    public static boolean oldHealth = true;
-    public static boolean oldAppearance = true;
-    public static boolean oldSounds = true;
-
+public class EntityODEnderman extends EntityMob {
     private static final Set<Block> CARRIABLE_BLOCKS = Sets.<Block>newIdentityHashSet();
     private static final Set<Block> CARRIABLE_BLOCKS_OLD = Sets.<Block>newIdentityHashSet();
     private static final UUID ATTACKING_SPEED_BOOST_ID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
@@ -100,7 +94,7 @@ public class EntityODEnderman extends EntityMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(oldHealth ? 20D : 40D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(EndermanSettings.endermanOldHealth ? 20D : 40D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30000001192092896D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
@@ -145,7 +139,7 @@ public class EntityODEnderman extends EntityMob
         {
             this.lastCreepySound = this.ticksExisted;
 
-            if (!this.isSilent() && oldSounds)
+            if (!this.isSilent() && EndermanSettings.endermanOldSounds)
             {
                 this.worldObj.playSound(this.posX, this.posY + (double)this.getEyeHeight(), this.posZ, SoundEvents.ENTITY_ENDERMEN_STARE, this.getSoundCategory(), 2.5F, 1.0F, false);
             }
@@ -154,7 +148,7 @@ public class EntityODEnderman extends EntityMob
 
     public void notifyDataManagerChange(DataParameter<?> key)
     {
-        if (SCREAMING.equals(key) && this.isScreaming() && this.worldObj.isRemote && oldSounds)
+        if (SCREAMING.equals(key) && this.isScreaming() && this.worldObj.isRemote && EndermanSettings.endermanOldSounds)
         {
             this.playEndermanSound();
         }
@@ -244,7 +238,7 @@ public class EntityODEnderman extends EntityMob
     {
         for (int k = 0; k < 2; k++)
         {
-            if (oldAppearance) {
+            if (EndermanSettings.endermanOldAppearance) {
                 worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX + (rand.nextDouble() - 0.5D) * (double)width, posY + rand.nextDouble() * (double)height, posZ + (rand.nextDouble() - 0.5D) * (double)width, 0.0D, 0.0D, 0.0D);
             } else {
                 worldObj.spawnParticle(EnumParticleTypes.PORTAL, posX + (rand.nextDouble() - 0.5D) * (double)width, (posY + rand.nextDouble() * (double)height) - 0.25D, posZ + (rand.nextDouble() - 0.5D) * (double)width, (rand.nextDouble() - 0.5D) * 2D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D);
@@ -321,17 +315,17 @@ public class EntityODEnderman extends EntityMob
 
     protected SoundEvent getAmbientSound()
     {
-        return !oldSounds ? (this.isScreaming() ? SoundEvents.ENTITY_ENDERMEN_SCREAM : SoundEvents.ENTITY_ENDERMEN_AMBIENT) : SoundEvents.ENTITY_ZOMBIE_AMBIENT;
+        return !EndermanSettings.endermanOldSounds ? (this.isScreaming() ? SoundEvents.ENTITY_ENDERMEN_SCREAM : SoundEvents.ENTITY_ENDERMEN_AMBIENT) : SoundEvents.ENTITY_ZOMBIE_AMBIENT;
     }
 
     protected SoundEvent getHurtSound()
     {
-        return !oldSounds ? SoundEvents.ENTITY_ENDERMEN_HURT : SoundEvents.ENTITY_ZOMBIE_HURT;
+        return !EndermanSettings.endermanOldSounds ? SoundEvents.ENTITY_ENDERMEN_HURT : SoundEvents.ENTITY_ZOMBIE_HURT;
     }
 
     protected SoundEvent getDeathSound()
     {
-        return !oldSounds ? SoundEvents.ENTITY_ENDERMEN_DEATH : SoundEvents.ENTITY_ZOMBIE_DEATH;
+        return !EndermanSettings.endermanOldSounds ? SoundEvents.ENTITY_ENDERMEN_DEATH : SoundEvents.ENTITY_ZOMBIE_DEATH;
     }
 
     /**
@@ -414,7 +408,7 @@ public class EntityODEnderman extends EntityMob
     /*===================================== Forge Start ==============================*/
     public static void setCarriable(Block block, boolean canCarry)
     {
-        if (oldPicking)
+        if (EndermanSettings.endermanOldBlockStealing)
             if (canCarry) CARRIABLE_BLOCKS_OLD.add(block);
             else          CARRIABLE_BLOCKS_OLD.remove(block);
         else
@@ -424,7 +418,7 @@ public class EntityODEnderman extends EntityMob
 
     public static boolean getCarriable(Block block)
     {
-        if (oldPicking) return CARRIABLE_BLOCKS_OLD.contains(block);
+        if (EndermanSettings.endermanOldBlockStealing) return CARRIABLE_BLOCKS_OLD.contains(block);
         else return CARRIABLE_BLOCKS.contains(block);
     }
     /*===================================== Forge End ==============================*/
@@ -691,7 +685,7 @@ public class EntityODEnderman extends EntityMob
             RayTraceResult raytraceresult = world.rayTraceBlocks(new Vec3d((double)((float)MathHelper.floor_double(this.enderman.posX) + 0.5F), (double)((float)j + 0.5F), (double)((float)MathHelper.floor_double(this.enderman.posZ) + 0.5F)), new Vec3d((double)((float)i + 0.5F), (double)((float)j + 0.5F), (double)((float)k + 0.5F)), false, true, false);
             boolean flag = raytraceresult != null && raytraceresult.getBlockPos().equals(blockpos);
 
-            if (oldPicking) {
+            if (EndermanSettings.endermanOldBlockStealing) {
                 if (EntityODEnderman.CARRIABLE_BLOCKS_OLD.contains(block) && flag)
                 {
                     this.enderman.setHeldBlockState(iblockstate);

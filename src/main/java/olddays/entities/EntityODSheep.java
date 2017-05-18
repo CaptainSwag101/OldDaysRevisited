@@ -1,60 +1,36 @@
-package olddays.entities.sheep;
+package olddays.entities;
 
 import net.minecraft.entity.passive.EntityAnimal;
-import com.google.common.collect.Maps;
-import java.util.Map;
+
 import java.util.Random;
 import javax.annotation.Nullable;
-import net.minecraft.block.Block;
+
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIEatGrass;
-import net.minecraft.entity.ai.EntityAIFollowParent;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import olddays.settings.mob.SheepSettings;
 
 /**
  * Created by James Pelster on 7/23/2016.
  */
-public class EntityODSheep extends EntitySheep
-{
-    public static boolean dropWoolWhenAttacked = true;
-
+public class EntityODSheep extends EntitySheep {
     private static final DataParameter<Byte> DYE_COLOR = EntityDataManager.<Byte>createKey(EntitySheep.class, DataSerializers.BYTE);
     /**
      * Internal crafting inventory used to check the result of mixing dyes corresponding to the fleece color when
@@ -132,7 +108,7 @@ public class EntityODSheep extends EntitySheep
 
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount) {
-        if (dropWoolWhenAttacked && source.getSourceOfDamage() instanceof EntityPlayer && !this.getSheared() && !this.isChild())
+        if (SheepSettings.sheepPunchToShear && source.getSourceOfDamage() instanceof EntityPlayer && !this.getSheared() && !this.isChild())
         {
             if (!this.worldObj.isRemote)
             {
