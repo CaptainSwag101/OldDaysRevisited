@@ -1,6 +1,7 @@
 package olddays.entities;
 
 import com.google.common.base.Function;
+import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 import java.util.Random;
@@ -94,7 +95,7 @@ public class EntityODEnderman extends EntityMob {
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(EndermanSettings.endermanOldHealth ? 20D : 40D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30000001192092896D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
@@ -129,7 +130,7 @@ public class EntityODEnderman extends EntityMob {
     protected void entityInit()
     {
         super.entityInit();
-        this.dataManager.register(CARRIED_BLOCK, com.google.common.base.Optional.<IBlockState>absent());
+        this.dataManager.register(CARRIED_BLOCK, Optional.<IBlockState>absent());
         this.dataManager.register(SCREAMING, Boolean.valueOf(false));
     }
 
@@ -158,7 +159,7 @@ public class EntityODEnderman extends EntityMob {
 
     public static void registerFixesEnderman(DataFixer fixer)
     {
-       EntityLiving.registerFixesMob(fixer, "Enderman");
+        EntityLiving.registerFixesMob(fixer, "Enderman");
     }
 
     /**
@@ -228,20 +229,21 @@ public class EntityODEnderman extends EntityMob {
         return 2.55F;
     }
 
-
     /**
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.
      */
-
     public void onLivingUpdate()
     {
-        for (int k = 0; k < 2; k++)
+        if (this.worldObj.isRemote)
         {
-            if (EndermanSettings.endermanOldAppearance) {
-                worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX + (rand.nextDouble() - 0.5D) * (double)width, posY + rand.nextDouble() * (double)height, posZ + (rand.nextDouble() - 0.5D) * (double)width, 0.0D, 0.0D, 0.0D);
-            } else {
-                worldObj.spawnParticle(EnumParticleTypes.PORTAL, posX + (rand.nextDouble() - 0.5D) * (double)width, (posY + rand.nextDouble() * (double)height) - 0.25D, posZ + (rand.nextDouble() - 0.5D) * (double)width, (rand.nextDouble() - 0.5D) * 2D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2D);
+            for (int i = 0; i < 2; ++i)
+            {
+                if (EndermanSettings.endermanOldAppearance) {
+                    this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX + (rand.nextDouble() - 0.5D) * (double)width, posY + rand.nextDouble() * (double)height, posZ + (rand.nextDouble() - 0.5D) * (double)width, 0.0D, 0.0D, 0.0D);
+                } else {
+                    this.worldObj.spawnParticle(EnumParticleTypes.PORTAL, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height - 0.25D, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width, (this.rand.nextDouble() - 0.5D) * 2.0D, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2.0D, new int[0]);
+                }
             }
         }
 
@@ -359,7 +361,7 @@ public class EntityODEnderman extends EntityMob {
      */
     public void setHeldBlockState(@Nullable IBlockState state)
     {
-        this.dataManager.set(CARRIED_BLOCK, com.google.common.base.Optional.fromNullable(state));
+        this.dataManager.set(CARRIED_BLOCK, Optional.fromNullable(state));
     }
 
     /**
@@ -368,7 +370,7 @@ public class EntityODEnderman extends EntityMob {
     @Nullable
     public IBlockState getHeldBlockState()
     {
-        return (IBlockState)((com.google.common.base.Optional)this.dataManager.get(CARRIED_BLOCK)).orNull();
+        return (IBlockState)((Optional)this.dataManager.get(CARRIED_BLOCK)).orNull();
     }
 
     /**
