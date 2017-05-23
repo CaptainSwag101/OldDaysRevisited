@@ -7,7 +7,7 @@ public class RenderSkeleton2 extends RenderSkeleton
     public static boolean mobArmor = false;
     public static boolean fallback = false;
 
-    private static final ResourceLocation armorResource = new ResourceLocation("olddays/plate.png");
+    private static final ResourceLocation armorResource = new ResourceLocation("com.jpmac26.olddays/plate.png");
     private static final ResourceLocation armorFallback = new ResourceLocation("textures/models/armor/iron_layer_1.png");
 
     private ModelMobArmor armor;

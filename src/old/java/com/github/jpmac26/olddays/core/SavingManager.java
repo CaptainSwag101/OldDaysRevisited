@@ -16,7 +16,7 @@ public class SavingManager{
         Properties properties = new Properties();
         Minecraft mc = Minecraft.getMinecraft();
         try{
-            File dir = new File(mc.mcDataDir+"/olddays");
+            File dir = new File(mc.mcDataDir+"/com.jpmac26.olddays");
             if (dir.mkdirs()){
                 highlight = false;
             }
@@ -26,7 +26,7 @@ public class SavingManager{
                 saveCoreProperties();
                 return;
             }
-            properties.load(new FileInputStream(mc.mcDataDir+"/olddays/Core.properties"));
+            properties.load(new FileInputStream(mc.mcDataDir+"/com.jpmac26.olddays/Core.properties"));
             try{
                 String value = properties.getProperty("ssp");
                 mc.useSP = value.matches("^*([Oo][Nn]|[Tt][Rr][Uu][Ee]?|[Yy][Ee]?[SsPpAa]?[Hh]?)*$");
@@ -49,7 +49,7 @@ public class SavingManager{
         Properties properties = new Properties();
         Minecraft mc = Minecraft.getMinecraft();
         try{
-            File dir = new File(mc.mcDataDir+"/olddays");
+            File dir = new File(mc.mcDataDir+"/com.jpmac26.olddays");
             dir.mkdirs();
             File file = new File(dir, "Core.properties");
             FileOutputStream fileoutputstream = new FileOutputStream(file);
@@ -67,7 +67,7 @@ public class SavingManager{
         Properties properties = new Properties();
         OldDaysModule module = core.getModuleById(id);
         try{
-            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/olddays");
+            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/com.jpmac26.olddays");
             if (dir.mkdirs()){
                 highlight = false;
             }
@@ -81,7 +81,7 @@ public class SavingManager{
                 saveModuleProperties(id);
                 return;
             }
-            properties.load(new FileInputStream(mod_OldDays.getMinecraft().mcDataDir+"/olddays/"+module.name+".properties"));
+            properties.load(new FileInputStream(mod_OldDays.getMinecraft().mcDataDir+"/com.jpmac26.olddays/"+module.name+".properties"));
             for (int i = 1; i <= module.properties.size(); i++){
                 OldDaysProperty prop = module.getPropertyById(i);
                 if (!prop.canBeLoaded){
@@ -123,7 +123,7 @@ public class SavingManager{
         }
         Properties properties = new Properties();
         try{
-            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/olddays");
+            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/com.jpmac26.olddays");
             dir.mkdirs();
             File file = new File(dir, module.name+".properties");
             FileOutputStream fileoutputstream = new FileOutputStream(file);
@@ -157,7 +157,7 @@ public class SavingManager{
         try{
             int mode = 0;
             if (custom){
-                File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/olddays/presets");
+                File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/com.jpmac26.olddays/presets");
                 dir.mkdirs();
                 properties.load(new FileInputStream(new File(dir, name)));
             }else{
@@ -166,7 +166,7 @@ public class SavingManager{
                 }else if (name.equals("Vanilla")){
                     mode = 2;
                 }else{
-                    InputStream stream = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("olddays/presets/"+name)).getInputStream();
+                    InputStream stream = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("com.jpmac26.olddays/presets/"+name)).getInputStream();
                     properties.load(stream);
                 }
             }
@@ -200,7 +200,7 @@ public class SavingManager{
 
     public void savePreset(String name){
         try{
-            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/olddays/presets");
+            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/com.jpmac26.olddays/presets");
             dir.mkdirs();
             FileWriter filewriter = new FileWriter(new File(dir, name));
             BufferedWriter writer = new BufferedWriter(filewriter);
@@ -226,7 +226,7 @@ public class SavingManager{
 
     public void deletePreset(String name){
         try{
-            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/olddays/presets");
+            File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/com.jpmac26.olddays/presets");
             (new File(dir, name)).delete();
         }
         catch(Exception e){
@@ -237,7 +237,7 @@ public class SavingManager{
 
     public String[] getDefaultPresets(){
         ArrayList<String> presets = new ArrayList<String>();
-        ResourceLocation resource = new ResourceLocation("olddays/presets/list");
+        ResourceLocation resource = new ResourceLocation("com.jpmac26.olddays/presets/list");
         try{
             InputStream stream = Minecraft.getMinecraft().getResourceManager().getResource(resource).getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
@@ -256,7 +256,7 @@ public class SavingManager{
     }
 
     public String[] getCustomPresets(){
-        File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/olddays/presets");
+        File dir = new File(mod_OldDays.getMinecraft().mcDataDir+"/com.jpmac26.olddays/presets");
         String[] str = dir.list();
         if (str == null){
             str = new String[]{};

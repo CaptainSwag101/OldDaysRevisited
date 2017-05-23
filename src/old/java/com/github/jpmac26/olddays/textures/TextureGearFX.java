@@ -19,8 +19,8 @@ public class TextureGearFX extends TextureFX
     @Override
     protected void updateSize(){
         super.updateSize();
-        gear = getImageData("olddays/gear.png", size * 2);
-        gearmiddle = getImageData("olddays/gearmiddle.png", size);
+        gear = getImageData("com.jpmac26.olddays/gear.png", size * 2);
+        gearmiddle = getImageData("com.jpmac26.olddays/gearmiddle.png", size);
     }
 
     @Override

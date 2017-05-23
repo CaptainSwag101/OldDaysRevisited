@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL12;
 public class RenderEnderman2 extends RenderLiving
 {
     public static boolean greeneyes = false;
-    private static final ResourceLocation customEyes = new ResourceLocation("olddays/enderman_eyes.png");
+    private static final ResourceLocation customEyes = new ResourceLocation("com.jpmac26.olddays/enderman_eyes.png");
 
     private static final ResourceLocation field_110840_a = new ResourceLocation("textures/entity/enderman/enderman_eyes.png");
     private static final ResourceLocation field_110839_f = new ResourceLocation("textures/entity/enderman/enderman.png");

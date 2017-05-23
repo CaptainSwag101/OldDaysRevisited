@@ -63,25 +63,25 @@ public class SoundManager2 extends SoundManager{
         }
         String str = par1Str;
         if (par1Str.startsWith("random.explode") && explode){
-            str = "olddays.explode";
+            str = "com.jpmac26.olddays.explode";
         }
         if (par1Str.startsWith("damage.hit") && hurt < 2){
             if (hurt == 1){
-                return "olddays.hurtflesh";
+                return "com.jpmac26.olddays.hurtflesh";
             }
             str = "random.classic_hurt";
         }
         if (par1Str.startsWith("damage.fall") && fall < 2){
             if (fall == 1){
-                return "olddays.fall" + par1Str.substring(11);
+                return "com.jpmac26.olddays.fall" + par1Str.substring(11);
             }
             return "nothing";
         }
         if (par1Str.startsWith("random.bowhit") && drr){
-            str = "olddays.drr";
+            str = "com.jpmac26.olddays.drr";
         }
         if (par1Str.equals("random.bow") && bow){
-            str = "olddays.bow";
+            str = "com.jpmac26.olddays.bow";
         }
         if (par1Str.startsWith("random.orb") && xporb){
             str = "random.pop";
@@ -105,7 +105,7 @@ public class SoundManager2 extends SoundManager{
             if (!par1Str.endsWith("lava")){
                 str = par1Str;
             }else{
-                str = (lava == 1) ? "olddays.lava" : "liquid.lava";
+                str = (lava == 1) ? "com.jpmac26.olddays.lava" : "liquid.lava";
             }
         }
         if (par1Str.startsWith("mob.endermen.") && enderman<2){
@@ -126,25 +126,25 @@ public class SoundManager2 extends SoundManager{
             }
         }
         if (par1Str.startsWith("mob.creeper.say") && creeper){
-            str = "olddays.creeper";
+            str = "com.jpmac26.olddays.creeper";
         }
         if (par1Str.startsWith("random.door_open") && door){
-            str = "olddays.door_open";
+            str = "com.jpmac26.olddays.door_open";
         }
         if (par1Str.startsWith("random.door_close") && door){
-            str = "olddays.door_close";
+            str = "com.jpmac26.olddays.door_close";
         }
         if (par1Str.startsWith("random.chestopen") && chest<2){
             if (chest<1){
                 return "nothing";
             }
-            str = "olddays.door_open";
+            str = "com.jpmac26.olddays.door_open";
         }
         if (par1Str.startsWith("random.chestclosed") && chest<2){
             if (chest<1){
                 return "nothing";
             }
-            str = "olddays.door_close";
+            str = "com.jpmac26.olddays.door_close";
         }
         if (par1Str.startsWith("dig.sand") && steps){
             return "dig.gravel";
@@ -159,25 +159,25 @@ public class SoundManager2 extends SoundManager{
             return "step.cloth";
         }
         if (par1Str.startsWith("mob.cow.say") && cow){
-            str = "olddays.cow";
+            str = "com.jpmac26.olddays.cow";
         }
         if (par1Str.startsWith("mob.cow.hurt") && cow){
-            str = "olddays.cowhurt";
+            str = "com.jpmac26.olddays.cowhurt";
         }
         if (par1Str.startsWith("mob.slime") && slime){
             str = "mob.slime.small";
         }
         if ((par1Str.startsWith("mob.skeleton.hurt") || par1Str.startsWith("mob.skeleton.death")) && skeleton){
-            str = "olddays.skeletonhurt";
+            str = "com.jpmac26.olddays.skeletonhurt";
         }
         if (par1Str.startsWith("fire.ignite") && ignite){
-            str = "olddays.ignite";
+            str = "com.jpmac26.olddays.ignite";
         }
         if (par1Str.startsWith("mob.sheep.shear") && !shear){
             return "nothing";
         }
         if (par1Str.startsWith("liquid.splash") && splash){
-            str = "olddays.splash";
+            str = "com.jpmac26.olddays.splash";
         }
         if (par1Str.startsWith("liquid.swim") && !swimming){
             return "nothing";

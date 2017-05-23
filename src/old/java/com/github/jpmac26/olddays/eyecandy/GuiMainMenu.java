@@ -22,7 +22,7 @@ public class GuiMainMenu extends GuiScreen
         " *   * * *  ** *   *   * * * * *    * ",
         " *   * * *   * *** *** * * * * *    * "
     };
-    private static final ResourceLocation blackResource = new ResourceLocation("olddays/black.png");
+    private static final ResourceLocation blackResource = new ResourceLocation("com.jpmac26.olddays/black.png");
     private LogoEffectRandomizer logoEffects[][];
     public static boolean replaceGuiSelectWorld = true;
 

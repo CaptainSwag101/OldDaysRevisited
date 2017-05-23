@@ -53,7 +53,7 @@ public class ODNBXlite extends OldDaysModule{
         WorldInfo.useNBXlite = true;
         set(RenderGlobal.class, "nbxlite", true);
         Minecraft.getMinecraft().worldClass = WorldSSP2.class;
-        set(ItemRenderer.class, "olddays", true);
+        set(ItemRenderer.class, "com.jpmac26.olddays", true);
         flags = new HashMap<String, Boolean>();
         Minecraft.isom = true;
         registerStructure(StructureStrongholdStart2.class, "Stronghold");

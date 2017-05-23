@@ -1,4 +1,4 @@
-entity.olddays.Enderman.name=Enderman
+entity.com.jpmac26.olddays.Enderman.name=Enderman
 
 module.actions=Actions
 module.bugs=Bugs
@@ -31,7 +31,7 @@ gui.presets.new=New Preset
 gui.presets.default=Default
 gui.presets.custom=Custom
 
-key.olddays.category=Old Days Revisited
+key.com.jpmac26.olddays.category=Old Days Revisited
 key.olddays_menu.desc=Open Old Days Menu
 
 actions.punchtnt.name=Punch TNT

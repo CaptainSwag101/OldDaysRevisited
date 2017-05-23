@@ -6,7 +6,7 @@ import org.lwjgl.opengl.GL11;
 
 public class GuiContainerCreativeOld extends InventoryEffectRenderer
 {
-    private static final ResourceLocation bgResource = new ResourceLocation("olddays/allitems.png");
+    private static final ResourceLocation bgResource = new ResourceLocation("com.jpmac26.olddays/allitems.png");
 
     private static InventoryBasic inventory = new InventoryBasic("tmp", false, 72);
 

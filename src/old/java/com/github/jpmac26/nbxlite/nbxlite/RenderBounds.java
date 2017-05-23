@@ -10,8 +10,8 @@ import org.lwjgl.opengl.GL12;
 import net.minecraft.src.*;
 
 public class RenderBounds{
-    private static ResourceLocation classicWater = new ResourceLocation("olddays/classic_water.png");
-    private static ResourceLocation classicLava = new ResourceLocation("olddays/classic_lava.png");
+    private static ResourceLocation classicWater = new ResourceLocation("com.jpmac26.olddays/classic_water.png");
+    private static ResourceLocation classicLava = new ResourceLocation("com.jpmac26.olddays/classic_lava.png");
 
     private static TextureManager renderEngine;
     private static Minecraft mc;

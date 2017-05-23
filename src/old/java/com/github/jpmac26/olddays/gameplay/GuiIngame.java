@@ -16,7 +16,7 @@ public class GuiIngame extends Gui
     public static boolean fallbacktex = false;
     public static boolean score = false;
     public static String version = "OFF";
-    private static final ResourceLocation customArmorResource = new ResourceLocation("olddays/icons.png");
+    private static final ResourceLocation customArmorResource = new ResourceLocation("com.jpmac26.olddays/icons.png");
 
     private static final ResourceLocation vignetteTexPath = new ResourceLocation("textures/misc/vignette.png");
     private static final ResourceLocation widgetsTexPath = new ResourceLocation("textures/gui/widgets.png");

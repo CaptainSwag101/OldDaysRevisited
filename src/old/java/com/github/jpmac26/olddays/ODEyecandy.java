@@ -34,7 +34,7 @@ public class ODEyecandy extends OldDaysModule{
         new OldDaysPropertyBool(this,   27,false, false, "OldBackground");
         isLocal = true;
         redstoneRenderID = 41;
-        set(ItemRenderer.class, "olddays", true);
+        set(ItemRenderer.class, "com.jpmac26.olddays", true);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ODEyecandy extends OldDaysModule{
             case 1: set(ModelBiped.class, "oldwalking", OldWalking); break;
             case 2: set(RendererLivingEntity.class, "bobbing", Bobbing); break;
             case 3: set(EntityEnderman.class, "smoke", OldEndermen);
-                    set(RenderEnderman2.class, "greeneyes", OldEndermen && hasTextures("olddays/enderman_eyes.png")); break;
+                    set(RenderEnderman2.class, "greeneyes", OldEndermen && hasTextures("com.jpmac26.olddays/enderman_eyes.png")); break;
             case 4: set(ItemRenderer.class, "sway", ItemSway); break;
             case 5: set(ItemRenderer.class, "items2d", Items2D); break;
             case 6: set(BlockChestOld.class, "normalblock", OldChest);
@@ -55,8 +55,8 @@ public class ODEyecandy extends OldDaysModule{
             case 7: set(RendererLivingEntity.class, "labels", MobLabels); break;
             case 8: set(RenderZombie2.class, "mobArmor", MobArmor);
                     set(RenderSkeleton2.class, "mobArmor", MobArmor);
-                    set(RenderZombie2.class, "fallback", !hasTextures("olddays/plate.png"));
-                    set(RenderSkeleton2.class, "fallback", !hasTextures("olddays/plate.png")); break;
+                    set(RenderZombie2.class, "fallback", !hasTextures("com.jpmac26.olddays/plate.png"));
+                    set(RenderSkeleton2.class, "fallback", !hasTextures("com.jpmac26.olddays/plate.png")); break;
             case 9: set(GuiMainMenu.class, "panorama", MainMenu>1);
                     set(GuiMainMenu.class, "oldlogo", MainMenu<1);
                     set(GuiMainMenu.class, "texturepacks", MainMenu<3); break;

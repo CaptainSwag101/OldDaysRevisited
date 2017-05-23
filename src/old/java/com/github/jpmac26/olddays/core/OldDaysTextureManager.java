@@ -46,7 +46,7 @@ public class OldDaysTextureManager{
         entryCache.clear();
         removeTextureFXes();
         core.refreshTextures();
-        setFallback(!hasEntry("olddays"));
+        setFallback(!hasEntry("com.jpmac26.olddays"));
     }
 
     public void refreshTextureHooks(){

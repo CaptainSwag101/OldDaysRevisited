@@ -25,7 +25,7 @@ public class mod_OldDays extends Mod implements ResourceManagerReloadListener{
         smpman = new SMPManager(this);
         modules = new ArrayList<OldDaysModule>();
         newlyDisabled = new ArrayList<OldDaysProperty>();
-        lang = new OldDaysEasyLocalization("olddays");
+        lang = new OldDaysEasyLocalization("com.jpmac26.olddays");
         keyBindings = new ArrayList<KeyBinding>();
         resetOptionsForNextWorld = false;
     }
@@ -455,7 +455,7 @@ public class mod_OldDays extends Mod implements ResourceManagerReloadListener{
             if (file.exists()){
                 return true;
             }
-            InputStream str = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("olddays/sounds/"+name)).getInputStream();
+            InputStream str = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("com.jpmac26.olddays/sounds/"+name)).getInputStream();
             DataInputStream stream = new DataInputStream(str);
             byte[] bytes = new byte[stream.available()];
             stream.readFully(bytes);

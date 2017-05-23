@@ -22,8 +22,8 @@ public class TextureWatchFX extends TextureFX
     @Override
     protected void updateSize(){
         super.updateSize();
-        watchIconImageData = getImageData("olddays/clock.png", size);
-        dialImageData = getImageData("olddays/dial.png", size);
+        watchIconImageData = getImageData("com.jpmac26.olddays/clock.png", size);
+        dialImageData = getImageData("com.jpmac26.olddays/dial.png", size);
     }
 
     @Override

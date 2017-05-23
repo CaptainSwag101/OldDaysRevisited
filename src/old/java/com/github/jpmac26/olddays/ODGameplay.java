@@ -35,7 +35,7 @@ public class ODGameplay extends OldDaysModule{
                     set(ItemFood.class, "heal", !EnableHunger);
                     set(BlockCake2.class, "heal", !EnableHunger);
                     set(GuiIngame.class, "hidehunger", !EnableHunger);
-                    set(GuiIngame.class, "fallbacktex", !hasTextures("olddays/icons.png")); break;
+                    set(GuiIngame.class, "fallbacktex", !hasTextures("com.jpmac26.olddays/icons.png")); break;
             case 3: set(ItemFood.class, "instant", InstantFood); break;
             case 4: set(ItemFood.class, "stacks", FoodStacking); break;
             case 5: set(EntityLivingBase.class, "oldloot", OldDrops); break;

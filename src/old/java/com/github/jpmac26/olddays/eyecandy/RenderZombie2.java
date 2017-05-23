@@ -10,7 +10,7 @@ public class RenderZombie2 extends RenderBiped
     private static final ResourceLocation field_110866_o = new ResourceLocation("textures/entity/zombie_pigman.png");
     private static final ResourceLocation field_110865_p = new ResourceLocation("textures/entity/zombie/zombie.png");
     private static final ResourceLocation field_110864_q = new ResourceLocation("textures/entity/zombie/zombie_villager.png");
-    private static final ResourceLocation armorResource = new ResourceLocation("olddays/plate.png");
+    private static final ResourceLocation armorResource = new ResourceLocation("com.jpmac26.olddays/plate.png");
     private static final ResourceLocation armorFallback = new ResourceLocation("textures/models/armor/iron_layer_1.png");
 
     private ModelMobArmor armor;

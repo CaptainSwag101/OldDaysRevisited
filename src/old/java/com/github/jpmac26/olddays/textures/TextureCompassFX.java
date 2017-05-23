@@ -17,7 +17,7 @@ public class TextureCompassFX extends TextureFX
     @Override
     protected void updateSize(){
         super.updateSize();
-        compassIconImageData = getImageData("olddays/compass.png", size);
+        compassIconImageData = getImageData("com.jpmac26.olddays/compass.png", size);
     }
 
     @Override

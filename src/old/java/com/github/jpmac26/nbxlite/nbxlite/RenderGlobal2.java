@@ -18,7 +18,7 @@ public class RenderGlobal2 extends RenderGlobal{
     private static final ResourceLocation field_110928_i = new ResourceLocation("textures/environment/sun.png");
     private static final ResourceLocation field_110925_j = new ResourceLocation("textures/environment/clouds.png");
     private static final ResourceLocation field_110926_k = new ResourceLocation("textures/environment/end_sky.png");
-    private static final ResourceLocation fluffTexture = new ResourceLocation("olddays/fluff.png");
+    private static final ResourceLocation fluffTexture = new ResourceLocation("com.jpmac26.olddays/fluff.png");
 
     protected Minecraft mc;
     protected TextureManager renderEngine;

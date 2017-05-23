@@ -44,66 +44,66 @@ public class ODTextures extends OldDaysModule{
         isLocal = true;
         for (int i = 1; i <= properties.size(); i++){
             if (i != 15 && (i < 24 || i == 30 || i == 31 || i == 33 || i == 37)){
-                getPropertyById(i).setFallback("olddays/textures.png");
+                getPropertyById(i).setFallback("com.jpmac26.olddays/textures.png");
             }
         }
-        getPropertyById(24).setFallback("olddays/pig.png");
-        getPropertyById(25).setFallback("olddays/slime.png");
-        getPropertyById(26).setFallback("olddays/char.png");
-        getPropertyById(27).setFallback("olddays/explosion.png");
-        getPropertyById(28).setFallback("olddays/moon_phases.png");
-        getPropertyById(32).setFallback("olddays/textures.png", "olddays/cloth_1.png", "olddays/cloth_2.png");
-        getPropertyById(35).setFallback("olddays/mojang.png", "olddays/mojang2.png");
-//         getPropertyById(36).setFallback("olddays/cow.png");
+        getPropertyById(24).setFallback("com.jpmac26.olddays/pig.png");
+        getPropertyById(25).setFallback("com.jpmac26.olddays/slime.png");
+        getPropertyById(26).setFallback("com.jpmac26.olddays/char.png");
+        getPropertyById(27).setFallback("com.jpmac26.olddays/explosion.png");
+        getPropertyById(28).setFallback("com.jpmac26.olddays/moon_phases.png");
+        getPropertyById(32).setFallback("com.jpmac26.olddays/textures.png", "com.jpmac26.olddays/cloth_1.png", "com.jpmac26.olddays/cloth_2.png");
+        getPropertyById(35).setFallback("com.jpmac26.olddays/mojang.png", "com.jpmac26.olddays/mojang2.png");
+//         getPropertyById(36).setFallback("com.jpmac26.olddays/cow.png");
         prevProcedural = Procedural;
     }
 
     @Override
     public void callback (int i){
-        boolean fallback = !hasTextures("olddays/textures.png");
+        boolean fallback = !hasTextures("com.jpmac26.olddays/textures.png");
         switch(i){
-            case 1: replaceBlockIcon(Block.cobblestone, "olddays/textures.png", Cobblestone, 0, Cobblestone < 2); break;
-            case 2: replaceBlockIcon(Block.cobblestoneMossy, "olddays/textures.png", 2, 0, MossStone); break;
-            case 3: replaceBlockIcon(Block.stone, "olddays/textures.png", 3, 0, Stone); setFurnace(); break;
-            case 4: replaceBlockIcon(Block.brick, "olddays/textures.png", 6 + Brick, 0, Brick < 2); break;
-            case 5: replaceBlockIcon(Block.sand, "olddays/textures.png", 11, 0, Sand); break;
-            case 6: replaceBlockIcon(Block.gravel, "olddays/textures.png", Gravel == 0 ? 12 : 0, Gravel == 0 ? 0 : 4, Gravel < 2); break;
+            case 1: replaceBlockIcon(Block.cobblestone, "com.jpmac26.olddays/textures.png", Cobblestone, 0, Cobblestone < 2); break;
+            case 2: replaceBlockIcon(Block.cobblestoneMossy, "com.jpmac26.olddays/textures.png", 2, 0, MossStone); break;
+            case 3: replaceBlockIcon(Block.stone, "com.jpmac26.olddays/textures.png", 3, 0, Stone); setFurnace(); break;
+            case 4: replaceBlockIcon(Block.brick, "com.jpmac26.olddays/textures.png", 6 + Brick, 0, Brick < 2); break;
+            case 5: replaceBlockIcon(Block.sand, "com.jpmac26.olddays/textures.png", 11, 0, Sand); break;
+            case 6: replaceBlockIcon(Block.gravel, "com.jpmac26.olddays/textures.png", Gravel == 0 ? 12 : 0, Gravel == 0 ? 0 : 4, Gravel < 2); break;
             case 7: setDirt(); break;
             case 8: setGrass(); break;
-            case 9: replaceBlockIcon(Block.planks, "olddays/textures.png", 4 + Planks, 0, Planks < 2); break;
-            case 10:replaceBlockIcon(Block.sapling, "olddays/textures.png", 9 + Sapling, 0, Sapling < 2); break;
+            case 9: replaceBlockIcon(Block.planks, "com.jpmac26.olddays/textures.png", 4 + Planks, 0, Planks < 2); break;
+            case 10:replaceBlockIcon(Block.sapling, "com.jpmac26.olddays/textures.png", 9 + Sapling, 0, Sapling < 2); break;
             case 11:setCloth(); break;
-            case 12:replaceBlockIcon(Block.glowStone, "olddays/textures.png", 1, 1, Glowstone); break;
+            case 12:replaceBlockIcon(Block.glowStone, "com.jpmac26.olddays/textures.png", 1, 1, Glowstone); break;
             case 13:setOreBlocks(); break;
-            case 14:replaceBlockIcon(Block.mobSpawner, "olddays/textures.png", 0, 1, Spawner); break;
+            case 14:replaceBlockIcon(Block.mobSpawner, "com.jpmac26.olddays/textures.png", 0, 1, Spawner); break;
             case 15:setFurnace(); break;
             case 16:setDispenser(); break;
-            case 17:replaceBlockIcon(Block.web, "olddays/textures.png", 8, 0, Web); break;
+            case 17:replaceBlockIcon(Block.web, "com.jpmac26.olddays/textures.png", 8, 0, Web); break;
             case 18:setPorkchop(); break;
-            case 19:replaceItemIcon(Item.axeWood, "olddays/textures.png", 8, 3, Axes);
-                    replaceItemIcon(Item.axeStone, "olddays/textures.png", 9, 3, Axes);
-                    replaceItemIcon(Item.axeIron, "olddays/textures.png", 10, 3, Axes);
-                    replaceItemIcon(Item.axeDiamond, "olddays/textures.png", 11, 3, Axes);
-                    replaceItemIcon(Item.axeGold, "olddays/textures.png", 12, 3, Axes); break;
-            case 20:replaceItemIcon(Item.coal, "olddays/textures.png", 4, 3, Coal); break;
-            case 21:replaceItemIcon(Item.flint, "olddays/textures.png", 5, 3, Flint); break;
-            case 22:replaceItemIcon(Item.flintAndSteel, "olddays/textures.png", 6, 3, FlintSteel); break;
-            case 23:replaceItemIcon(Item.feather, "olddays/textures.png", 7, 3, Feather); break;
-            case 24:setTextureHook("textures/entity/pig/pig.png", "olddays/pig.png", !Pigs && !fallback); break;
-            case 25:setTextureHook("textures/entity/slime/slime.png", "olddays/slime.png", Slimes && !fallback); break;
-            case 26:setTextureHook("textures/entity/steve.png", "olddays/char.png", Steve && !fallback); break;
-            case 27:setTextureHook("textures/entity/explosion.png", "olddays/explosion.png", Explosion); break;
-            case 28:setTextureHook("textures/environment/moon_phases.png", "olddays/moon_phases.png", !Moon && !fallback); break;
+            case 19:replaceItemIcon(Item.axeWood, "com.jpmac26.olddays/textures.png", 8, 3, Axes);
+                    replaceItemIcon(Item.axeStone, "com.jpmac26.olddays/textures.png", 9, 3, Axes);
+                    replaceItemIcon(Item.axeIron, "com.jpmac26.olddays/textures.png", 10, 3, Axes);
+                    replaceItemIcon(Item.axeDiamond, "com.jpmac26.olddays/textures.png", 11, 3, Axes);
+                    replaceItemIcon(Item.axeGold, "com.jpmac26.olddays/textures.png", 12, 3, Axes); break;
+            case 20:replaceItemIcon(Item.coal, "com.jpmac26.olddays/textures.png", 4, 3, Coal); break;
+            case 21:replaceItemIcon(Item.flint, "com.jpmac26.olddays/textures.png", 5, 3, Flint); break;
+            case 22:replaceItemIcon(Item.flintAndSteel, "com.jpmac26.olddays/textures.png", 6, 3, FlintSteel); break;
+            case 23:replaceItemIcon(Item.feather, "com.jpmac26.olddays/textures.png", 7, 3, Feather); break;
+            case 24:setTextureHook("textures/entity/pig/pig.png", "com.jpmac26.olddays/pig.png", !Pigs && !fallback); break;
+            case 25:setTextureHook("textures/entity/slime/slime.png", "com.jpmac26.olddays/slime.png", Slimes && !fallback); break;
+            case 26:setTextureHook("textures/entity/steve.png", "com.jpmac26.olddays/char.png", Steve && !fallback); break;
+            case 27:setTextureHook("textures/entity/explosion.png", "com.jpmac26.olddays/explosion.png", Explosion); break;
+            case 28:setTextureHook("textures/environment/moon_phases.png", "com.jpmac26.olddays/moon_phases.png", !Moon && !fallback); break;
             case 29:setArmorShape(); break;
             case 30:setCocoa(); break;
-            case 31:replaceBlockIcon(Block.netherrack, "olddays/textures.png", 1, 4, Netherrack); break;
+            case 31:replaceBlockIcon(Block.netherrack, "com.jpmac26.olddays/textures.png", 1, 4, Netherrack); break;
             case 32:setArmor(LeatherArmor && !fallback); break;
             case 33:setFood(); break;
             case 34:refreshTextureFXes(true); break;
             case 35:setMojangScreen(); break;
-//             case 36:setTextureHook("textures/entity/cow/cow.png", "olddays/cow.png", Cows && !fallback); break;
+//             case 36:setTextureHook("textures/entity/cow/cow.png", "com.jpmac26.olddays/cow.png", Cows && !fallback); break;
             case 36:set(ItemCoalOld.class, "oldCharcoal", Charcoal); break;
-            case 37:replaceBlockIcon(Block.blockLapis, "olddays/textures.png", 15, 4, Lapis); break;
+            case 37:replaceBlockIcon(Block.blockLapis, "com.jpmac26.olddays/textures.png", 15, 4, Lapis); break;
         }
     }
 
@@ -275,8 +275,8 @@ public class ODTextures extends OldDaysModule{
         }catch(NullPointerException e){
             return;
         }
-        replaceIcon(i, "olddays/textures.png", 15, 0, "textures/blocks/grass_side.png", Dirt);*/
-        replaceBlockIcon(Block.dirt, "olddays/textures.png", 14, 0, Dirt);
+        replaceIcon(i, "com.jpmac26.olddays/textures.png", 15, 0, "textures/blocks/grass_side.png", Dirt);*/
+        replaceBlockIcon(Block.dirt, "com.jpmac26.olddays/textures.png", 14, 0, Dirt);
     }
 
     private void setGrass(){
@@ -286,7 +286,7 @@ public class ODTextures extends OldDaysModule{
         }catch(NullPointerException e){
             return;
         }
-        replaceIcon(i, "olddays/textures.png", 13, 0, "textures/blocks/grass_top.png", Grass);
+        replaceIcon(i, "com.jpmac26.olddays/textures.png", 13, 0, "textures/blocks/grass_top.png", Grass);
     }
 
     private void setCloth(){
@@ -304,15 +304,15 @@ public class ODTextures extends OldDaysModule{
         for (int i = 0; i < icons.length; i++){
             int x = (Wool == 0 ? classic[i] : beta[i]) % 16;
             int y = (Wool == 0 ? classic[i] : beta[i]) / 16;
-            replaceIcon(icons[i], "olddays/textures.png", x, y, "textures/blocks/wool_colored_" + ItemDye.dyeItemNames[~i & 0xF] + ".png", Wool < 2);
+            replaceIcon(icons[i], "com.jpmac26.olddays/textures.png", x, y, "textures/blocks/wool_colored_" + ItemDye.dyeItemNames[~i & 0xF] + ".png", Wool < 2);
         }
     }
 
     private void setOreBlocks(){
-        replaceBlockIcon(Block.blockIron, "olddays/textures.png", 1, 3, OreBlocks < 2);
-        replaceBlockIcon(Block.blockGold, "olddays/textures.png", 2, 3, OreBlocks < 2);
-        replaceBlockIcon(Block.blockDiamond, "olddays/textures.png", 3, 3, OreBlocks < 2);
-        set(BlockOreStorageOld.class, "oldtextures", OreBlocks < 1 && hasTextures("olddays/textures.png"));
+        replaceBlockIcon(Block.blockIron, "com.jpmac26.olddays/textures.png", 1, 3, OreBlocks < 2);
+        replaceBlockIcon(Block.blockGold, "com.jpmac26.olddays/textures.png", 2, 3, OreBlocks < 2);
+        replaceBlockIcon(Block.blockDiamond, "com.jpmac26.olddays/textures.png", 3, 3, OreBlocks < 2);
+        set(BlockOreStorageOld.class, "oldtextures", OreBlocks < 1 && hasTextures("com.jpmac26.olddays/textures.png"));
         reload();
     }
 
@@ -324,7 +324,7 @@ public class ODTextures extends OldDaysModule{
             return;
         }
         if (Stone){
-            replaceIcon(i, "olddays/textures.png", 3, 0, "textures/blocks/furnace_top.png", Furnace);
+            replaceIcon(i, "com.jpmac26.olddays/textures.png", 3, 0, "textures/blocks/furnace_top.png", Furnace);
         }else{
             replaceIcon(i, "textures/blocks/stone.png", 0, 0, "textures/blocks/furnace_top.png", Furnace);
         }
@@ -337,7 +337,7 @@ public class ODTextures extends OldDaysModule{
         }catch(NullPointerException e){
             return;
         }
-        replaceIcon(i, "olddays/textures.png", 0, 3, "textures/blocks/dispenser_front_horizontal.png", Dispenser);
+        replaceIcon(i, "com.jpmac26.olddays/textures.png", 0, 3, "textures/blocks/dispenser_front_horizontal.png", Dispenser);
     }
 
     private void setArmorShape(){
@@ -353,27 +353,27 @@ public class ODTextures extends OldDaysModule{
         }catch(NullPointerException e){
             return;
         }
-        replaceIcon(i, "olddays/textures.png", 15, 3, "textures/items/dye_powder_brown.png", Cocoa);
+        replaceIcon(i, "com.jpmac26.olddays/textures.png", 15, 3, "textures/items/dye_powder_brown.png", Cocoa);
     }
 
     private void setPorkchop(){
-        replaceItemIcon(Item.porkCooked, "olddays/textures.png", 0, 0, false);
+        replaceItemIcon(Item.porkCooked, "com.jpmac26.olddays/textures.png", 0, 0, false);
         if (Porkchop){
-            replaceItemIcon(Item.porkCooked, "olddays/textures.png", 14, Food ? 3 : 4, Porkchop);
+            replaceItemIcon(Item.porkCooked, "com.jpmac26.olddays/textures.png", 14, Food ? 3 : 4, Porkchop);
         }else{
-            replaceItemIcon(Item.porkCooked, "olddays/textures.png", 7, 4, Food);
+            replaceItemIcon(Item.porkCooked, "com.jpmac26.olddays/textures.png", 7, 4, Food);
         }
     }
 
     private void setFood(){
-        replaceItemIcon(Item.porkRaw, "olddays/textures.png", 6, 4, Food);
+        replaceItemIcon(Item.porkRaw, "com.jpmac26.olddays/textures.png", 6, 4, Food);
         setPorkchop();
-        replaceItemIcon(Item.beefRaw, "olddays/textures.png", 8, 4, Food);
-        replaceItemIcon(Item.beefCooked, "olddays/textures.png", 9, 4, Food);
-        replaceItemIcon(Item.chickenRaw, "olddays/textures.png", 10, 4, Food);
-        replaceItemIcon(Item.chickenCooked, "olddays/textures.png", 11, 4, Food);
-        replaceItemIcon(Item.appleRed, "olddays/textures.png", 12, 4, Food);
-        replaceItemIcon(Item.bread, "olddays/textures.png", 13, 4, Food);
+        replaceItemIcon(Item.beefRaw, "com.jpmac26.olddays/textures.png", 8, 4, Food);
+        replaceItemIcon(Item.beefCooked, "com.jpmac26.olddays/textures.png", 9, 4, Food);
+        replaceItemIcon(Item.chickenRaw, "com.jpmac26.olddays/textures.png", 10, 4, Food);
+        replaceItemIcon(Item.chickenCooked, "com.jpmac26.olddays/textures.png", 11, 4, Food);
+        replaceItemIcon(Item.appleRed, "com.jpmac26.olddays/textures.png", 12, 4, Food);
+        replaceItemIcon(Item.bread, "com.jpmac26.olddays/textures.png", 13, 4, Food);
     }
 
     private void setArmor(boolean b){
@@ -388,22 +388,22 @@ public class ODTextures extends OldDaysModule{
             }catch(NullPointerException e){
                 break;
             }
-            replaceIcon(icon1, "olddays/textures.png", 2 + i, 4, "textures/items/" + overlayNames[i] + ".png", b);
+            replaceIcon(icon1, "com.jpmac26.olddays/textures.png", 2 + i, 4, "textures/items/" + overlayNames[i] + ".png", b);
             eraseIcon(icon2, "textures/items/" + items[i].getIconString() + ".png", !b);
         }
-        setTextureHook("textures/models/armor/leather_layer_1_overlay.png", "olddays/cloth_1.png", b);
-        setTextureHook("textures/models/armor/leather_layer_2_overlay.png", "olddays/cloth_2.png", b);
-        setTextureHook("textures/models/armor/leather_layer_1.png", "olddays/cloth_empty.png", b);
-        setTextureHook("textures/models/armor/leather_layer_2.png", "olddays/cloth_empty.png", b);
+        setTextureHook("textures/models/armor/leather_layer_1_overlay.png", "com.jpmac26.olddays/cloth_1.png", b);
+        setTextureHook("textures/models/armor/leather_layer_2_overlay.png", "com.jpmac26.olddays/cloth_2.png", b);
+        setTextureHook("textures/models/armor/leather_layer_1.png", "com.jpmac26.olddays/cloth_empty.png", b);
+        setTextureHook("textures/models/armor/leather_layer_2.png", "com.jpmac26.olddays/cloth_empty.png", b);
     }
 
     private void setMojangScreen(){
         if (MojangScreen == 1){
-            setTextureHook("textures/gui/title/mojang.png", "olddays/mojang2.png", false);
-            setTextureHook("textures/gui/title/mojang.png", "olddays/mojang.png", true);
+            setTextureHook("textures/gui/title/mojang.png", "com.jpmac26.olddays/mojang2.png", false);
+            setTextureHook("textures/gui/title/mojang.png", "com.jpmac26.olddays/mojang.png", true);
             return;
         }
-        setTextureHook("textures/gui/title/mojang.png", "olddays/mojang.png", false);
-        setTextureHook("textures/gui/title/mojang.png", "olddays/mojang2.png", MojangScreen == 0);
+        setTextureHook("textures/gui/title/mojang.png", "com.jpmac26.olddays/mojang.png", false);
+        setTextureHook("textures/gui/title/mojang.png", "com.jpmac26.olddays/mojang2.png", MojangScreen == 0);
     }
 }
