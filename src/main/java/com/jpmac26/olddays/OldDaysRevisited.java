@@ -22,6 +22,7 @@ import java.util.Arrays;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.jpmac26.olddays.world.WorldTypeOld;
 
 /**
  * Created by James Pelster on 7/11/2016.
@@ -33,6 +34,9 @@ public class OldDaysRevisited
     public static OldDaysRevisited instance;
     public static final String MODID = "olddays";
     public static final String VERSION = "0.1.1";
+
+    public static final WorldTypeOld worldtype = (new WorldTypeOld("OldDays"));
+
     public static Logger LOGGER = LogManager.getLogger("OldDaysRevisited");
     public static boolean isSrg = !(boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     protected KeyHandler keyHandler;
