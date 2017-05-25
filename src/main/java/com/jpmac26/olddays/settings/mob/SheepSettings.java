@@ -1,24 +1,35 @@
 package com.jpmac26.olddays.settings.mob;
 
 import com.jpmac26.olddays.ConfigHandler;
-import com.jpmac26.olddays.entities.EntityODSheep;
+import com.jpmac26.olddays.entity.EntityODSheep;
 
 /**
  * Created by James Pelster on 5/18/17.
  */
 public class SheepSettings
 {
-    public static void syncConfig()
+    public static void load()
     {
         String category = "mobs.sheep";
-        ConfigHandler.config.get(
+
+        EntityODSheep.punchToShear =
+            ConfigHandler.config.get(
                 category,
                 "punchToShear",
-                true,
+                false,
                 "Causes sheep to drop their wool when attacked, instead of requiring shears."
-        ).set(EntityODSheep.punchToShear);
+            ).getBoolean();
+    }
 
-        //EntityODSheep.oldHealth = ConfigHandler.config.getBoolean("oldHealth", category, false, "Causes Endermen to have 40 health instead of 20, like in the 1.9 prereleases.");
-        EntityODSheep.punchToShear = ConfigHandler.config.getBoolean("punchToShear", category, true, "Causes sheep to drop their wool when attacked, instead of requiring shears.");
+    public static void save()
+    {
+        String category = "mobs.sheep";
+
+        ConfigHandler.config.get(
+            category,
+            "punchToShear",
+            false,
+            "Causes sheep to drop their wool when attacked, instead of requiring shears."
+        ).set(EntityODSheep.punchToShear);
     }
 }

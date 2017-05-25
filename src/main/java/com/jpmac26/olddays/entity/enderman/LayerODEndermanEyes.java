@@ -1,35 +1,36 @@
-package com.jpmac26.olddays.entities.enderman;
+package com.jpmac26.olddays.entity.enderman;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.jpmac26.olddays.entities.EntityODEnderman;
+import com.jpmac26.olddays.entity.EntityODEnderman;
 
 /**
  * Created by James Pelster on 7/11/2016.
  */
 @SideOnly(Side.CLIENT)
-public class LayerODEndermanEyes implements LayerRenderer<EntityODEnderman>
+public class LayerODEndermanEyes implements LayerRenderer<EntityEnderman>
 {
-    private static ResourceLocation RES_ENDERMAN_EYES;
+    //private static ResourceLocation RES_ENDERMAN_EYES;
     private final RenderODEnderman endermanRenderer;
 
-    public LayerODEndermanEyes(RenderODEnderman endermanRendererIn)
+    public LayerODEndermanEyes(RenderODEnderman rendererIn)
     {
-        this.endermanRenderer = endermanRendererIn;
+        this.endermanRenderer = rendererIn;
     }
 
-    public void doRenderLayer(EntityODEnderman entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    public void doRenderLayer(EntityEnderman entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         if (EntityODEnderman.oldAppearance)
-            RES_ENDERMAN_EYES = new ResourceLocation("olddays:textures/enderman_eyes.png");
+            this.endermanRenderer.bindTexture(new ResourceLocation("olddays:textures/enderman_eyes.png"));
         else
-            RES_ENDERMAN_EYES = new ResourceLocation("textures/entity/enderman/enderman_eyes.png");
+            this.endermanRenderer.bindTexture(new ResourceLocation("textures/entity/enderman/enderman_eyes.png"));
 
-        this.endermanRenderer.bindTexture(RES_ENDERMAN_EYES);
+        //this.endermanRenderer.bindTexture(RES_ENDERMAN_EYES);
         GlStateManager.enableBlend();
         GlStateManager.disableAlpha();
         GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);

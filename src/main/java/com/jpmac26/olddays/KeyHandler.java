@@ -1,5 +1,7 @@
 package com.jpmac26.olddays;
 
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.settings.KeyBinding;
@@ -12,6 +14,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 /**
  * Created by James Pelster on 7/14/2016.
  */
+@SideOnly(Side.CLIENT)
 public class KeyHandler {
 
     public static final int CUSTOM_INV = 0;
@@ -34,19 +37,19 @@ public class KeyHandler {
 
     @SubscribeEvent
     public void onKeyInput(KeyInputEvent event) {
-        //System.out.println("Key Down");
+        //OldDaysRevisited.LOGGER.debug("Key Down");
 
         EntityPlayer player = FMLClientHandler.instance().getClient().player;
 
         if(FMLClientHandler.instance().getClient().inGameHasFocus) {
-            //System.out.println("Game does have focus");
+            //OldDaysRevisited.LOGGER.debug("Game does have focus");
 
             int kb = Keyboard.getEventKey();
             boolean isDown = Keyboard.getEventKeyState();
 
             if(kb == keys[0].getKeyCode() && isDown) {
-                System.out.println("Opening OldDays Config Menu");
-                player.openGui(OldDaysRevisited.olddays, 0, player.world, (int) player.posX, (int) player.posY, (int) player.posZ);
+                OldDaysRevisited.LOGGER.debug("Opening OldDays Config Menu");
+                player.openGui(OldDaysRevisited.instance, 0, player.world, (int) player.posX, (int) player.posY, (int) player.posZ);
                 //if you're not sure, use player.openGui(MAINMODCLASS.instance, YOURGUIID, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 
             }

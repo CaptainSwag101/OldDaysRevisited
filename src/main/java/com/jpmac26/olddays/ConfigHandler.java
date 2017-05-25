@@ -23,16 +23,26 @@ public class ConfigHandler {
 
     public static void init(File file) {
         config = new Configuration(file);
-        syncConfig();
+        load();
+        save();
     }
 
-    public static void syncConfig() {
+    public static void load() {
         String category;
 
         category = "mobs";
         config.addCustomCategoryComment(category, "Mob-specific settings");
-        EndermanSettings.syncConfig();
-        SheepSettings.syncConfig();
+        EndermanSettings.load();
+        SheepSettings.load();
+    }
+
+    public static void save() {
+        String category;
+
+        category = "mobs";
+        config.addCustomCategoryComment(category, "Mob-specific settings");
+        EndermanSettings.save();
+        SheepSettings.save();
 
         if (config.hasChanged())
             config.save();

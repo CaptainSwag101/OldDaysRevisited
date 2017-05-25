@@ -2,13 +2,12 @@
 {
   "modid": "com.jpmac26.olddays",
   "name": "Old Days Revisited",
-  "description": "A recreation of Exalm's 'Old Days' and 'NBXLite' mods for Minecraft Forge.",
+  "description": "Bringing back old Minecraft experiences, one version at a time.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://github.com/jpmac26/OldDaysRevisited",
   "updateUrl": "",
   "authorList": ["CaptainSwag101","Kodehawa"],
-  "credits": "Exalm, for making such an amazing original mod, the likes of which no one had ever seen before.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

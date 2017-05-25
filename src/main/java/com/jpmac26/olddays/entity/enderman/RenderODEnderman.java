@@ -1,21 +1,21 @@
-package com.jpmac26.olddays.entities.enderman;
+package com.jpmac26.olddays.entity.enderman;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.model.ModelEnderman;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.jpmac26.olddays.entities.EntityODEnderman;
 
 import java.util.Random;
 
 /**
- * Created by James Pelster on 7/11/2016.
+ * Created by James Pelster on 5/24/2017.
  */
 @SideOnly(Side.CLIENT)
-public class RenderODEnderman extends RenderLiving<EntityODEnderman>
+public class RenderODEnderman extends RenderLiving<EntityEnderman>
 {
     private static final ResourceLocation ENDERMAN_TEXTURES = new ResourceLocation("textures/entity/enderman/enderman.png");
     /** The model of the enderman */
@@ -33,8 +33,7 @@ public class RenderODEnderman extends RenderLiving<EntityODEnderman>
     /**
      * Renders the desired {@code T} type Entity.
      */
-    @Override
-    public void doRender(EntityODEnderman entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityEnderman entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         IBlockState iblockstate = entity.getHeldBlockState();
         this.endermanModel.isCarrying = iblockstate != null;
@@ -53,8 +52,7 @@ public class RenderODEnderman extends RenderLiving<EntityODEnderman>
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    @Override
-    protected ResourceLocation getEntityTexture(EntityODEnderman entity)
+    protected ResourceLocation getEntityTexture(EntityEnderman entity)
     {
         return ENDERMAN_TEXTURES;
     }

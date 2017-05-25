@@ -1,4 +1,4 @@
-package com.jpmac26.olddays.entities.enderman;
+package com.jpmac26.olddays.entity.enderman;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -7,15 +7,15 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.jpmac26.olddays.entities.EntityODEnderman;
 
 /**
- * Created by James Pelster on 7/11/2016.
+ * Created by James Pelster on 5/24/2017.
  */
 @SideOnly(Side.CLIENT)
-public class LayerODHeldBlock implements LayerRenderer<EntityODEnderman>
+public class LayerODHeldBlock implements LayerRenderer<EntityEnderman>
 {
     private final RenderODEnderman endermanRenderer;
 
@@ -24,7 +24,7 @@ public class LayerODHeldBlock implements LayerRenderer<EntityODEnderman>
         this.endermanRenderer = endermanRendererIn;
     }
 
-    public void doRenderLayer(EntityODEnderman entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    public void doRenderLayer(EntityEnderman entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         IBlockState iblockstate = entitylivingbaseIn.getHeldBlockState();
 

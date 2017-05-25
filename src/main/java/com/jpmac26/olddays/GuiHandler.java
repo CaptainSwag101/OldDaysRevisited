@@ -1,12 +1,16 @@
-package com.jpmac26.olddays.client.gui;
+package com.jpmac26.olddays;
 
+import com.jpmac26.olddays.client.gui.GuiConfigMain;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by James Pelster on 7/14/2016.
  */
+@SideOnly(Side.CLIENT)
 public class GuiHandler implements IGuiHandler {
     public static final int GUI_CONFIG_MAIN = 0;
 
