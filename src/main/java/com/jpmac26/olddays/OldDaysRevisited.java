@@ -3,6 +3,7 @@ package com.jpmac26.olddays;
 import com.jpmac26.olddays.entity.enderman.RenderODEndermanFactory;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.launchwrapper.Launch;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.*;
 import com.jpmac26.olddays.entity.EntityODEnderman;
 import com.jpmac26.olddays.entity.EntityODSheep;
@@ -26,13 +27,13 @@ import org.apache.logging.log4j.Logger;
 /**
  * Created by James Pelster on 7/11/2016.
  */
-@Mod(modid = "olddays", name = "Old Days Revisited", version = "0.1.1", acceptedMinecraftVersions = "1.10.2")
+@Mod(modid = "olddays", name = "Old Days Revisited", version = "0.2.0", acceptedMinecraftVersions = "1.11.2")
 public class OldDaysRevisited
 {
     @Mod.Instance
     public static OldDaysRevisited instance;
     public static final String MODID = "olddays";
-    public static final String VERSION = "0.1.1";
+    public static final String VERSION = "0.2.0";
     public static Logger LOGGER = LogManager.getLogger("OldDaysRevisited");
     public static boolean isSrg = !(boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     protected KeyHandler keyHandler;
@@ -61,8 +62,8 @@ public class OldDaysRevisited
     public void init(FMLInitializationEvent event) {
         //register custom entity
         int id = 0;
-        registerModEntity(EntityODEnderman.class, "Enderman", id++, this, 64, 3, true);
-        registerModEntity(EntityODSheep.class, "Sheep", id++, this, 64, 3, true);
+        registerModEntity(new ResourceLocation("olddays:enderman"), EntityODEnderman.class, "Enderman", id++, this, 64, 3, true);
+        registerModEntity(new ResourceLocation("olddays:sheep"), EntityODSheep.class, "Sheep", id++, this, 64, 3, true);
     }
 
     @SideOnly(Side.CLIENT)

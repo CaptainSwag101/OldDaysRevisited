@@ -8,11 +8,11 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
+//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "0.1.1"
-group = "com.jpmac26.com.jpmac26.olddays" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "0.2.0"
+group = "com.jpmac26.olddays" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "OldDaysRevisited"
 
 sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
@@ -21,14 +21,21 @@ compileJava {
 }
 
 minecraft {
-    version = "1.10.2-12.18.3.2297"
+    version = "1.11.2-13.20.0.2304"
     runDir = "run"
-    mappings = "stable_29"
+    
+    // the mappings can be changed at any time, and must be in the following format.
+    // snapshot_YYYYMMDD   snapshot are built nightly.
+    // stable_#            stables are built at the discretion of the MCP team.
+    // Use non-default mappings at your own risk. they may not always work.
+    // simply re-run your setup task after changing the mappings to update your workspace.
+    mappings = 'snapshot_20170525'
+    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
 dependencies {
     // you may put jars on which you depend on in ./libs
-    // or you may define them like so.
+    // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
       
@@ -50,8 +57,7 @@ dependencies {
 
 }
 
-processResources
-{
+processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
@@ -64,22 +70,8 @@ processResources
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
         
-    // copy everything else, thats not the mcmod.info
+    // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-    }
-
-    //rename '(.+_at.cfg)', 'META-INF/$1'
-}
-
-//jar {
-    //manifest {
-        //attributes 'FMLAT': 'MODID_at.cfg'
-    //}
-//}
-
-idea {
-    module {
-        inheritOutputDirs = true
     }
 }
