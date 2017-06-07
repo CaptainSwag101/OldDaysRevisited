@@ -8,7 +8,8 @@ import com.jpmac26.olddays.entity.EntityEndermanOld;
  */
 public class EndermanSettings
 {
-    public static void load() {
+    public static void load()
+    {
         String category = "mobs.enderman";
 
         EntityEndermanOld.oldAppearance =
@@ -44,7 +45,8 @@ public class EndermanSettings
             ).getBoolean();
     }
 
-    public static void save() {
+    public static void save()
+    {
         String category = "mobs.enderman";
 
         ConfigHandler.config.get(
