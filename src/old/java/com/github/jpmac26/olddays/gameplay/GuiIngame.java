@@ -11,7 +11,7 @@ import net.minecraft.src.ssp.SSPOptions;
 public class GuiIngame extends Gui
 {
     public static boolean hidexp = false;
-    public static boolean hidehunger = false;
+    public static boolean hideHunger = (GameplaySettings.hungerMode == GameplaySettings.HungerMode.DISABLED || GameplaySettings.hungerMode == GameplaySettings.HungerMode.BETA_LIKE);
     public static boolean nodebug = false;
     public static boolean fallbacktex = false;
     public static boolean score = false;
@@ -542,7 +542,7 @@ public class GuiIngame extends Gui
         while (true);
     }
 
-    private void func_110327_a(int par1, int par2)
+    private void func_110327_a(int par1, int par2) //renderPlayerStats()
     {
         boolean flag = (mc.thePlayer.hurtResistantTime / 3) % 2 == 1;
 

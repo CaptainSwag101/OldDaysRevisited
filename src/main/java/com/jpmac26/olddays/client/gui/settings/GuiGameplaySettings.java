@@ -1,4 +1,4 @@
-package com.jpmac26.olddays.client.gui;
+package com.jpmac26.olddays.client.gui.settings;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -9,11 +9,11 @@ import java.io.IOException;
 /**
  * Created by James Pelster on 7/20/2016.
  */
-public class GuiConfigTextures extends GuiScreen {
+public class GuiGameplaySettings extends GuiScreen {
 
     private final GuiScreen parentGuiScreen;
 
-    public GuiConfigTextures(GuiScreen parent) {
+    public GuiGameplaySettings(GuiScreen parent) {
         this.parentGuiScreen = parent;
     }
 

@@ -1,15 +1,24 @@
 package com.jpmac26.olddays.client.gui;
 
+import com.jpmac26.olddays.client.gui.settings.*;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiSlot;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
 
 /**
  * Created by James Pelster on 7/14/2016.
  */
-public class GuiConfigMain extends GuiScreen {
+@SideOnly(Side.CLIENT)
+public class GuiMainSettings extends GuiScreen {
     private GuiButton ActionsButton;
     //private GuiButton BugsButton;
     private GuiButton GameplayButton;
@@ -26,6 +35,54 @@ public class GuiConfigMain extends GuiScreen {
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
+    @Override
+    /**
+     * Draws either a gradient over the background screen (when it exists) or a flat gradient over background.png
+     */
+    public void drawDefaultBackground()
+    {
+        this.drawWorldBackground(0); // tint is always 0 as of 1.2.2
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new net.minecraftforge.client.event.GuiScreenEvent.BackgroundDrawnEvent(this));
+    }
+
+    public void drawWorldBackground(int tint)
+    {
+        if (this.mc.world != null)
+        {
+            this.drawGradientRect(0, 0, this.width, this.height, -1072689136, -804253680);
+            this.drawBackground(tint);
+        }
+        else
+        {
+            this.drawBackground(tint);
+        }
+    }
+
+    /**
+     * Draws the background (i is always 0 as of 1.2.2)
+     */
+    @Override
+    public void drawBackground(int tint)
+    {
+        GlStateManager.disableLighting();
+        GlStateManager.disableFog();
+        Tessellator tessellator = Tessellator.getInstance();
+        VertexBuffer vertexbuffer = tessellator.getBuffer();
+        this.mc.getTextureManager().bindTexture(OPTIONS_BACKGROUND);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        float f = 32.0F;
+        vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
+        vertexbuffer.pos(0.0D, (double)this.height, 0.0D).tex(0.0D, (double)((float)this.height / 32.0F + (float)tint)).color(64, 64, 64, 255).endVertex();
+        vertexbuffer.pos((double)this.width, (double)this.height, 0.0D).tex((double)((float)this.width / 32.0F), (double)((float)this.height / 32.0F + (float)tint)).color(64, 64, 64, 255).endVertex();
+        vertexbuffer.pos((double)this.width, 0.0D, 0.0D).tex((double)((float)this.width / 32.0F), (double)tint).color(64, 64, 64, 255).endVertex();
+        vertexbuffer.pos(0.0D, 0.0D, 0.0D).tex(0.0D, (double)tint).color(64, 64, 64, 255).endVertex();
+        tessellator.draw();
+    }
+
+    /**
+     * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
+     * window resizes, the buttonList is cleared beforehand.
+     */
     public void initGui() {
         this.buttonList.clear();
 
@@ -65,28 +122,28 @@ public class GuiConfigMain extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button.id == 1) {
-            this.mc.displayGuiScreen(new GuiConfigActions(this));
+            this.mc.displayGuiScreen(new GuiActionSettings(this));
         }
         if (button.id == 2) {
-            this.mc.displayGuiScreen(new GuiConfigGameplay(this));
+            this.mc.displayGuiScreen(new GuiGameplaySettings(this));
         }
         if (button.id == 3) { //Mobs Button
-            this.mc.displayGuiScreen(new GuiConfigMobs(this));
+            this.mc.displayGuiScreen(new GuiMobSettings(this));
         }
         if (button.id == 4) {
-            this.mc.displayGuiScreen(new GuiConfigEyecandy(this));
+            this.mc.displayGuiScreen(new GuiEyecandySettings(this));
         }
         if (button.id == 5) {
-            this.mc.displayGuiScreen(new GuiConfigSounds(this));
+            this.mc.displayGuiScreen(new GuiSoundSettings(this));
         }
         if (button.id == 6) {
-            this.mc.displayGuiScreen(new GuiConfigCrafting(this));
+            this.mc.displayGuiScreen(new GuiCraftingSettings(this));
         }
         if (button.id == 7) {
-            this.mc.displayGuiScreen(new GuiConfigTextures(this));
+            this.mc.displayGuiScreen(new GuiTextureSettings(this));
         }
         if (button.id == 8) {
-            this.mc.displayGuiScreen(new GuiConfigWorld(this));
+            this.mc.displayGuiScreen(new GuiWorldSettings(this));
         }
         if (button.id == 9) {
             this.mc.displayGuiScreen(null);

@@ -1,7 +1,7 @@
 package com.jpmac26.olddays.settings.mob;
 
 import com.jpmac26.olddays.ConfigHandler;
-import com.jpmac26.olddays.entity.EntityODSheep;
+import com.jpmac26.olddays.entity.EntitySheepOld;
 
 /**
  * Created by James Pelster on 5/18/17.
@@ -12,7 +12,7 @@ public class SheepSettings
     {
         String category = "mobs.sheep";
 
-        EntityODSheep.punchToShear =
+        EntitySheepOld.punchToShear =
             ConfigHandler.config.get(
                 category,
                 "punchToShear",
@@ -30,6 +30,6 @@ public class SheepSettings
             "punchToShear",
             false,
             "Causes sheep to drop their wool when attacked, instead of requiring shears."
-        ).set(EntityODSheep.punchToShear);
+        ).set(EntitySheepOld.punchToShear);
     }
 }

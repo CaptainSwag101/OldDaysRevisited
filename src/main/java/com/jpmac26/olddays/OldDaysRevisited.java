@@ -1,12 +1,14 @@
 package com.jpmac26.olddays;
 
-import com.jpmac26.olddays.entity.enderman.RenderODEndermanFactory;
+import com.jpmac26.olddays.entity.EntityEndermanOld;
+import com.jpmac26.olddays.entity.enderman.RenderEndermanFactoryOld;
+import com.jpmac26.olddays.settings.GameplaySettings;
+import com.jpmac26.olddays.settings.MobSettings;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.*;
-import com.jpmac26.olddays.entity.EntityODEnderman;
-import com.jpmac26.olddays.entity.EntityODSheep;
+import com.jpmac26.olddays.entity.EntitySheepOld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -38,16 +40,21 @@ public class OldDaysRevisited
     public static boolean isSrg = !(boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     protected KeyHandler keyHandler;
     protected GuiHandler guiHandler;
-    protected ODEventHandler eventHandler;
+    protected GameplaySettings.EventHandler gameplayEventHandler;
+    protected MobSettings.EventHandler mobEventHandler;
     
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(EntityEnderman.class, RenderODEndermanFactory.INSTANCE);
-        //RenderingRegistry.registerEntityRenderingHandler(EntityODEnderman.class, RenderODEndermanFactory.INSTANCE);
+        RenderingRegistry.registerEntityRenderingHandler(EntityEnderman.class, RenderEndermanFactoryOld.INSTANCE);
 
-        eventHandler = new ODEventHandler();
-        MinecraftForge.EVENT_BUS.register(eventHandler);
+
+        // Register event handlers for each category
+        gameplayEventHandler = new GameplaySettings.EventHandler();
+        MinecraftForge.EVENT_BUS.register(gameplayEventHandler);
+        mobEventHandler = new MobSettings.EventHandler();
+        MinecraftForge.EVENT_BUS.register(mobEventHandler);
+
 
 		ModMetadata mMetadata = event.getModMetadata();
 		mMetadata.credits = "CaptainSwag101, Kodehawa, Exalm";
@@ -62,8 +69,8 @@ public class OldDaysRevisited
     public void init(FMLInitializationEvent event) {
         //register custom entity
         int id = 0;
-        registerModEntity(new ResourceLocation("olddays:enderman"), EntityODEnderman.class, "Enderman", id++, this, 64, 3, true);
-        registerModEntity(new ResourceLocation("olddays:sheep"), EntityODSheep.class, "Sheep", id++, this, 64, 3, true);
+        registerModEntity(new ResourceLocation("olddays:enderman"), EntityEndermanOld.class, "Enderman", id++, this, 64, 3, true);
+        registerModEntity(new ResourceLocation("olddays:sheep"), EntitySheepOld.class, "Sheep", id++, this, 64, 3, true);
     }
 
     @SideOnly(Side.CLIENT)

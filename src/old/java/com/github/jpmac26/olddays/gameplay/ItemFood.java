@@ -84,21 +84,20 @@ public class ItemFood extends Item
     protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         if (!par2World.isRemote){
-            if(heal){
-                if (this.itemID==Item.appleGold.itemID){
+            if (heal) {
+                if (this.itemID==Item.appleGold.itemID) {
                     par3EntityPlayer.heal(20);
-                }else if (this.itemID==Item.spiderEye.itemID || this.itemID==Item.rottenFlesh.itemID){
-                    if (par3EntityPlayer.getHealth() > 4){
+                } else if (this.itemID==Item.spiderEye.itemID || this.itemID==Item.rottenFlesh.itemID) {
+                    if (par3EntityPlayer.getHealth() > 4) {
                         par3EntityPlayer.heal(-4);
-                    }else{
+                    } else {
                         par3EntityPlayer.setHealth(1);
                     }
-                }else{
+                } else {
                     par3EntityPlayer.heal(healAmount);
                 }
-            }else{
-                if (potionId > 0 && par2World.rand.nextFloat() < potionEffectProbability)
-                {
+            } else {
+                if (potionId > 0 && par2World.rand.nextFloat() < potionEffectProbability) {
                     par3EntityPlayer.addPotionEffect(new PotionEffect(potionId, potionDuration * 20, potionAmplifier));
                 }
             }

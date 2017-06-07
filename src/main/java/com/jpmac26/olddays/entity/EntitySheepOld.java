@@ -12,11 +12,11 @@ import net.minecraft.world.World;
 /**
  * Created by James Pelster on 7/23/2016.
  */
-public class EntityODSheep extends EntitySheep {
+public class EntitySheepOld extends EntitySheep {
     public static boolean oldHealth;
     public static boolean punchToShear;
 
-    public EntityODSheep(World worldIn)
+    public EntitySheepOld(World worldIn)
     {
         super(worldIn);
     }

@@ -28,7 +28,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 /**
  * Created by James Pelster on 7/11/2016.
  */
-public class EntityODEnderman extends EntityEnderman {
+public class EntityEndermanOld extends EntityEnderman {
     public static Set<Block> CARRIABLE_BLOCKS;
     public static Field superCarriableBlocks;
     public static Field lastCreepySound;
@@ -60,7 +60,7 @@ public class EntityODEnderman extends EntityEnderman {
     }
 
 
-    public EntityODEnderman(World worldIn)
+    public EntityEndermanOld(World worldIn)
     {
         super(worldIn);
 

@@ -10,13 +10,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by James Pelster on 5/24/2017.
  */
-public class RenderODEndermanFactory implements IRenderFactory<EntityEnderman>
+public class RenderEndermanFactoryOld implements IRenderFactory<EntityEnderman>
 {
-    public static final RenderODEndermanFactory INSTANCE = new RenderODEndermanFactory();
+    public static final RenderEndermanFactoryOld INSTANCE = new RenderEndermanFactoryOld();
 
     @Override
     @SideOnly(Side.CLIENT)
     public Render<EntityEnderman> createRenderFor(RenderManager manager) {
-        return new RenderODEnderman(manager);
+        return new RenderEndermanOld(manager);
     }
 }

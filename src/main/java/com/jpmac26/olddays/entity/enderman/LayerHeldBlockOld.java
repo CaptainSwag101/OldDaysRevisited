@@ -15,11 +15,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * Created by James Pelster on 5/24/2017.
  */
 @SideOnly(Side.CLIENT)
-public class LayerODHeldBlock implements LayerRenderer<EntityEnderman>
+public class LayerHeldBlockOld implements LayerRenderer<EntityEnderman>
 {
-    private final RenderODEnderman endermanRenderer;
+    private final RenderEndermanOld endermanRenderer;
 
-    public LayerODHeldBlock(RenderODEnderman endermanRendererIn)
+    public LayerHeldBlockOld(RenderEndermanOld endermanRendererIn)
     {
         this.endermanRenderer = endermanRendererIn;
     }

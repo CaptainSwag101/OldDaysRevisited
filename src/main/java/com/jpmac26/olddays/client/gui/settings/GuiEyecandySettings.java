@@ -1,4 +1,4 @@
-package com.jpmac26.olddays.client.gui;
+package com.jpmac26.olddays.client.gui.settings;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -9,11 +9,11 @@ import java.io.IOException;
 /**
  * Created by James Pelster on 7/20/2016.
  */
-public class GuiConfigActions extends GuiScreen {
+public class GuiEyecandySettings extends GuiScreen {
 
     private final GuiScreen parentGuiScreen;
 
-    public GuiConfigActions(GuiScreen parent) {
+    public GuiEyecandySettings(GuiScreen parent) {
         this.parentGuiScreen = parent;
     }
 
@@ -26,12 +26,13 @@ public class GuiConfigActions extends GuiScreen {
     public void initGui() {
         this.buttonList.clear();
 
-        //this.buttonList.add(new GuiButton(1, this.width / 2 - 155, this.height / 6 + 24 - 6, 150, 20, I18n.format("Old EndermanSettings Sounds") + ": " + (SoundSettings.getOldEndermanSounds() ? "On" : "Off")));
+
         this.buttonList.add(new GuiButton(3, this.width / 2 - 100, this.height / 6 + 180 - 6, I18n.format("Back to Menu")));
     }
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
+
         if (button.id == 3) {
             this.mc.displayGuiScreen(parentGuiScreen);
         }

@@ -1,6 +1,6 @@
 [
 {
-  "modid": "com.jpmac26.olddays",
+  "modid": "olddays",
   "name": "Old Days Revisited",
   "description": "Bringing back old Minecraft experiences, one version at a time.",
   "version": "${version}",

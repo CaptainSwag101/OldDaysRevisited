@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-public class ODGameplay extends OldDaysModule{
-    public ODGameplay(mod_OldDays c){
+public class ODGameplay extends OldDaysModule {
+    public ODGameplay(mod_OldDays c) {
         super(c, 2, "Gameplay");
         new OldDaysPropertyBool(this, 1, false, true,  "EnableXP");
         new OldDaysPropertyBool(this, 2, false, true,  "EnableHunger").setRefreshOnFallback();
@@ -27,15 +27,15 @@ public class ODGameplay extends OldDaysModule{
     }
 
     @Override
-    public void callback (int i){
-        switch (i){
+    public void callback(int i) {
+        switch (i) {
             case 1: set(EntityXPOrb.class, "noxp", !EnableXP);
                     set(GuiIngame.class, "hidexp", !EnableXP); break;
             case 2: set(FoodStats.class, "disabled", !EnableHunger);
                     set(ItemFood.class, "heal", !EnableHunger);
                     set(BlockCake2.class, "heal", !EnableHunger);
                     set(GuiIngame.class, "hidehunger", !EnableHunger);
-                    set(GuiIngame.class, "fallbacktex", !hasTextures("com.jpmac26.olddays/icons.png")); break;
+                    set(GuiIngame.class, "fallbacktex", !hasTextures("olddays/icons.png")); break;
             case 3: set(ItemFood.class, "instant", InstantFood); break;
             case 4: set(ItemFood.class, "stacks", FoodStacking); break;
             case 5: set(EntityLivingBase.class, "oldloot", OldDrops); break;
@@ -87,8 +87,8 @@ public class ODGameplay extends OldDaysModule{
     public static boolean OldReachDistance = true;
 
     @Override
-    public void replaceBlocks(){
-        try{
+    public void replaceBlocks() {
+        try {
             Block.blocksList[Block.cake.blockID] = null;
             BlockCake2 customcake = (BlockCake2)(new BlockCake2(Block.cake.blockID));
             customcake.setHardness(0.5F);
@@ -98,17 +98,17 @@ public class ODGameplay extends OldDaysModule{
             customcake.setTextureName("cake");
             Block.blocksList[Block.cake.blockID] = customcake;
             mod_OldDays.setField(Block.class, null, 111, customcake);//Block: cake
-        }catch (Exception exception){
+        } catch (Exception exception) {
             System.out.println(exception);
         }
     }
 
     @Override
-    public void onInitPlayer(EntityClientPlayerMP player, GameSettings settings){
+    public void onInitPlayer(EntityClientPlayerMP player, GameSettings settings) {
         player.movementInput = new MovementInputFromOptionsCustom(player, settings);
     }
 
-    private void setSwordDamage(boolean b){
+    private void setSwordDamage(boolean b) {
         mod_OldDays.setField(ItemSword.class, Item.swordDiamond, 0, b ? 10 : 7);
         mod_OldDays.setField(ItemSword.class, Item.swordIron, 0, b ? 8 : 6);
         mod_OldDays.setField(ItemSword.class, Item.swordStone, 0, b ? 6 : 5);
@@ -116,7 +116,7 @@ public class ODGameplay extends OldDaysModule{
         mod_OldDays.setField(ItemSword.class, Item.swordGold, 0, 4);
     }
 
-    private void setArmorDamage(boolean b){
+    private void setArmorDamage(boolean b) {
         int damageReduceAmount = 5;
         mod_OldDays.setField(ItemArmor.class, Item.helmetLeather, damageReduceAmount, b ? 3 : 1);
         mod_OldDays.setField(ItemArmor.class, Item.helmetChain, damageReduceAmount, b ? 3 : 2);
@@ -162,8 +162,8 @@ public class ODGameplay extends OldDaysModule{
     }
 
     @Override
-    public boolean onTick(){
-        if (AllowDebug){
+    public boolean onTick() {
+        if (AllowDebug) {
             return true;
         }
         minecraft.gameSettings.showDebugInfo = false;

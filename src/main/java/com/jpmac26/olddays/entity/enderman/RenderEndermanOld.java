@@ -15,19 +15,19 @@ import java.util.Random;
  * Created by James Pelster on 5/24/2017.
  */
 @SideOnly(Side.CLIENT)
-public class RenderODEnderman extends RenderLiving<EntityEnderman>
+public class RenderEndermanOld extends RenderLiving<EntityEnderman>
 {
     private static final ResourceLocation ENDERMAN_TEXTURES = new ResourceLocation("textures/entity/enderman/enderman.png");
     /** The model of the enderman */
     private final ModelEnderman endermanModel;
     private final Random rnd = new Random();
 
-    public RenderODEnderman(RenderManager renderManagerIn)
+    public RenderEndermanOld(RenderManager renderManagerIn)
     {
         super(renderManagerIn, new ModelEnderman(0.0F), 0.5F);
         this.endermanModel = (ModelEnderman)super.mainModel;
-        this.addLayer(new LayerODEndermanEyes(this));
-        this.addLayer(new LayerODHeldBlock(this));
+        this.addLayer(new LayerEndermanEyesOld(this));
+        this.addLayer(new LayerHeldBlockOld(this));
     }
 
     /**

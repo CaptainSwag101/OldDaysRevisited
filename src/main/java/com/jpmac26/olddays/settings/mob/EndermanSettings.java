@@ -1,7 +1,7 @@
 package com.jpmac26.olddays.settings.mob;
 
 import com.jpmac26.olddays.ConfigHandler;
-import com.jpmac26.olddays.entity.EntityODEnderman;
+import com.jpmac26.olddays.entity.EntityEndermanOld;
 
 /**
  * Created by James Pelster on 5/23/17.
@@ -11,7 +11,7 @@ public class EndermanSettings
     public static void load() {
         String category = "mobs.enderman";
 
-        EntityODEnderman.oldAppearance =
+        EntityEndermanOld.oldAppearance =
             ConfigHandler.config.get(
                 category,
                 "oldAppearance",
@@ -19,7 +19,7 @@ public class EndermanSettings
                 "Causes Endermen to appear as they did in the 1.9 prereleases."
             ).getBoolean();
 
-        EntityODEnderman.oldBlockStealing =
+        EntityEndermanOld.oldBlockStealing =
             ConfigHandler.config.get(
                 category,
                 "oldBlockStealing",
@@ -27,7 +27,7 @@ public class EndermanSettings
                 "Allow Endermen to pick up a larger variety of blocks, like in the 1.9 prereleases."
             ).getBoolean();
 
-        EntityODEnderman.oldHealth =
+        EntityEndermanOld.oldHealth =
             ConfigHandler.config.get(
                 category,
                 "oldHealth",
@@ -35,7 +35,7 @@ public class EndermanSettings
                 "Causes Endermen to have 40 health instead of 20, like in the 1.9 prereleases."
             ).getBoolean();
 
-        EntityODEnderman.oldSounds =
+        EntityEndermanOld.oldSounds =
             ConfigHandler.config.get(
                 category,
                 "oldSounds",
@@ -52,27 +52,27 @@ public class EndermanSettings
             "oldAppearance",
             false,
             "Causes Endermen to appear as they did in the 1.9 prereleases."
-        ).set(EntityODEnderman.oldAppearance);
+        ).set(EntityEndermanOld.oldAppearance);
 
         ConfigHandler.config.get(
             category,
             "oldBlockStealing",
             false,
             "Allow Endermen to pick up a larger variety of blocks, like in the 1.9 prereleases."
-        ).set(EntityODEnderman.oldBlockStealing);
+        ).set(EntityEndermanOld.oldBlockStealing);
 
         ConfigHandler.config.get(
             category,
             "oldHealth",
             false,
             "Causes Endermen to have 40 health instead of 20, like in the 1.9 prereleases."
-        ).set(EntityODEnderman.oldHealth);
+        ).set(EntityEndermanOld.oldHealth);
 
         ConfigHandler.config.get(
             category,
             "oldSounds",
             false,
             "Causes Endermen to make Zombie noises, like in the 1.9 prereleases."
-        ).set(EntityODEnderman.oldSounds);
+        ).set(EntityEndermanOld.oldSounds);
     }
 }
