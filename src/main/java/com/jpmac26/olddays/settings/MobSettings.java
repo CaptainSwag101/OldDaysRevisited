@@ -3,6 +3,8 @@ package com.jpmac26.olddays.settings;
 import com.jpmac26.olddays.OldDaysRevisited;
 import com.jpmac26.olddays.entity.EntityEndermanOld;
 import com.jpmac26.olddays.entity.EntitySheepOld;
+import com.jpmac26.olddays.settings.mob.EndermanSettings;
+import com.jpmac26.olddays.settings.mob.SheepSettings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.passive.EntitySheep;
@@ -10,10 +12,22 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
- * Created by james on 5/23/17.
+ * Created by James Pelster on 5/23/17.
  */
 public class MobSettings
 {
+    public static void load()
+    {
+        EndermanSettings.load();
+        SheepSettings.load();
+    }
+
+    public static void save()
+    {
+        EndermanSettings.save();
+        SheepSettings.save();
+    }
+
     public static class EventHandler
     {
         @SubscribeEvent

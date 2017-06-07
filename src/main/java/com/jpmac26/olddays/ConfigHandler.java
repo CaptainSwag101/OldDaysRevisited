@@ -32,8 +32,7 @@ public class ConfigHandler {
 
         category = "mobs";
         config.addCustomCategoryComment(category, "Mob-specific settings");
-        EndermanSettings.load();
-        SheepSettings.load();
+        MobSettings.load();
     }
 
     public static void save() {
@@ -41,8 +40,7 @@ public class ConfigHandler {
 
         category = "mobs";
         config.addCustomCategoryComment(category, "Mob-specific settings");
-        EndermanSettings.save();
-        SheepSettings.save();
+        MobSettings.save();
 
         if (config.hasChanged())
             config.save();
