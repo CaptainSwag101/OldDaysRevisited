@@ -23,7 +23,7 @@ public class EntitySheepOld extends EntitySheep {
 
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount) {
-        if (punchToShear && source.getSourceOfDamage() instanceof EntityPlayer && !this.getSheared() && !this.isChild())
+        if (punchToShear && source.getImmediateSource() instanceof EntityPlayer && !this.getSheared() && !this.isChild())
         {
             if (!this.world.isRemote)
             {

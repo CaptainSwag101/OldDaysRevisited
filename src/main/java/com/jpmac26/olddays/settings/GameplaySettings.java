@@ -2,13 +2,19 @@ package com.jpmac26.olddays.settings;
 
 import com.jpmac26.olddays.OldDaysRevisited;
 import com.jpmac26.olddays.client.gui.GuiIngameOld;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -31,6 +37,7 @@ import squeek.applecore.api.hunger.HealthRegenEvent;
 import squeek.applecore.api.hunger.StarvationEvent;
 
 import static com.jpmac26.olddays.client.gui.GuiIngameOld.hideHunger;
+import static net.minecraft.client.gui.Gui.ICONS;
 
 /**
  * Created by James Pelster on 7/20/2016.
@@ -46,8 +53,11 @@ public class GameplaySettings
     }
 
     public static HungerMode hungerMode = HungerMode.DISABLED;   // 0 = vanilla version 1.11.2, 2 = vanilla 1.10.2 to 1.9?, 3 = vanilla 1.8.9? and earlier, 4 = disabled, 5 = beta-ish (instant healing, but applies potion effects like vanilla)
-    public static boolean experienceEnabled;
-
+    public static boolean experienceDisabled;
+    public static boolean noDebug = false;
+    public static boolean fallbackTex = false;
+    public static boolean score = false;
+    public static String version = "OFF";
     protected static final ResourceLocation customArmorResource = new ResourceLocation("olddays:textures/icons.png");
     private static final Minecraft minecraft = Minecraft.getMinecraft();
 
@@ -60,19 +70,76 @@ public class GameplaySettings
         @SubscribeEvent
         public void onPreRenderOverlay(RenderGameOverlayEvent.Pre event)
         {
-            /*
-            ScaledResolution resolution = event.getResolution();
-            int width = resolution.getScaledWidth();
-            int height = resolution.getScaledHeight();
-            EntityPlayerSP player = Minecraft.getMinecraft().player;
+            boolean hideHunger = (hungerMode == HungerMode.DISABLED || hungerMode == HungerMode.BETA_LIKE);
 
-            if (minecraft.playerController.gameIsSurvivalOrAdventure())
+            if (hideHunger && minecraft.playerController.gameIsSurvivalOrAdventure())
             {
-                //drawArmorInsteadOfHunger(width, height, player.getTotalArmorValue());
-                if (!(minecraft.ingameGUI instanceof GuiIngameOld))
-                    minecraft.ingameGUI = new GuiIngameOld(minecraft);
+                if (event.getType() == RenderGameOverlayEvent.ElementType.FOOD)
+                {
+                    //renderPlayerFood(event.getResolution());
+                    event.setCanceled(true);
+                }
+                if (event.getType() == RenderGameOverlayEvent.ElementType.ARMOR)
+                {
+                    renderPlayerArmor(event.getResolution());
+                    event.setCanceled(true);
+                }
             }
-            */
+        }
+
+        @SideOnly(Side.CLIENT)
+        protected void renderPlayerArmor(ScaledResolution scaledRes)
+        {
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            minecraft.getTextureManager().bindTexture(ICONS);
+
+            if (minecraft.getRenderViewEntity() instanceof EntityPlayer)
+            {
+                EntityPlayer entityplayer = (EntityPlayer)minecraft.getRenderViewEntity();
+                int playerHealth = MathHelper.ceil(entityplayer.getHealth());
+                FoodStats foodstats = entityplayer.getFoodStats();
+                int foodLevel = foodstats.getFoodLevel();
+                int hotbarLeft = scaledRes.getScaledWidth() / 2 - 91;
+                int hotbarRight = scaledRes.getScaledWidth() / 2 + 91;
+                int hotbarTop = scaledRes.getScaledHeight() - 39;
+                float playerMaxHealth = (float)entityplayer.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getAttributeValue();
+                int playerAbsorptionAmount = MathHelper.ceil(entityplayer.getAbsorptionAmount());
+                int numHealthBars = MathHelper.ceil((playerMaxHealth + (float)playerAbsorptionAmount) / 2.0F / 10.0F); //how many rows of hearts are being drawn, so we can draw armor above it
+                int healthBarTop = Math.max(10 - (numHealthBars - 2), 3);
+                int armorBarTop = hotbarTop - (numHealthBars - 1) * healthBarTop - 10;
+                int armor = entityplayer.getTotalArmorValue();
+
+                //minecraft.mcProfiler.startSection("armor");
+
+                for (int iconNum = 0; iconNum < 10; ++iconNum)
+                {
+                    if (entityplayer.getTotalArmorValue() > 0)
+                    {
+                        //int drawX = hotbarLeft + iconNum * 8;
+                        int drawX = hotbarRight - iconNum * 8 - 9;
+
+                        //draw full armor icon
+                        if (iconNum * 2 + 1 < armor)
+                        {
+                            minecraft.ingameGUI.drawTexturedModalRect(drawX, hotbarTop, 34, 9, 9, 9);
+                        }
+
+                        //draw half armor icon
+                        if (iconNum * 2 + 1 == armor)
+                        {
+                            minecraft.getTextureManager().bindTexture(new ResourceLocation("olddays:textures/icons.png"));
+                            minecraft.ingameGUI.drawTexturedModalRect(drawX, hotbarTop, 0, 0, 9, 9);
+                            minecraft.getTextureManager().bindTexture(ICONS);
+                        }
+
+                        //draw empty armor icon
+                        if (iconNum * 2 + 1 > armor)
+                        {
+                            minecraft.ingameGUI.drawTexturedModalRect(drawX, hotbarTop, 16, 9, 9, 9);
+                        }
+                    }
+                }
+            }
         }
 
 
