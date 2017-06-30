@@ -30,14 +30,14 @@ import org.apache.logging.log4j.Logger;
 /**
  * Created by James Pelster on 7/11/2016.
  */
-@Mod(modid = "olddays", name = "Old Days Revisited", version = "0.2.0", acceptedMinecraftVersions = "1.11.2")
+@Mod(modid = "olddays", name = "Old Days Revisited", version = "0.3.0", acceptedMinecraftVersions = "1.12")
 public class OldDaysRevisited
 {
     @Mod.Instance
     public static OldDaysRevisited instance;
     public static final String MODID = "olddays";
-    public static final String VERSION = "0.2.0";
-    public static Logger LOGGER = LogManager.getLogger("OldDaysRevisited");
+    public static final String VERSION = "0.3.0";
+    public static Logger LOGGER = LogManager.getLogger("olddaysrevisited");
     public static boolean isSrg = !(boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     protected KeyHandler keyHandler;
     protected GuiHandler guiHandler;

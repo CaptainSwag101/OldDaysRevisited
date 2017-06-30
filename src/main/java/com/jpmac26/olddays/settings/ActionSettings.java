@@ -1,5 +1,6 @@
 package com.jpmac26.olddays.settings;
 
+import com.jpmac26.olddays.block.BlockFarmlandOld;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -33,12 +35,29 @@ public class ActionSettings
 {
     public static boolean oldCropBreaking = true;
     public static boolean punchTNT = false;
+    public static BlockFarmlandOld blockFarmlandOld = new BlockFarmlandOld();
 
     //private static Map<EntityPlayer, BlockPos> playerPositionTracker;
 
 
+    public static void load()
+    {
+
+    }
+
+    public static void save()
+    {
+
+    }
+
+
     public static class EventHandler
     {
+        @SubscribeEvent
+        public void registerBlocks(RegistryEvent.Register<Block> event) {
+            event.getRegistry().registerAll(blockFarmlandOld);
+        }
+
         /**
          * Note: We may want to only process this event every 10 ticks or so, ot improve performance.
          * Then again, entities aren't updated every tick anyway, so maybe it's fine as-is.
